@@ -1,0 +1,636 @@
+Classfile /C:/Users/flyin/Documents/Java/asm-recompiler/src/test/java/com/raptor/test01/TestClass01.class
+  Last modified Dec 2, 2020; size 4939 bytes
+  SHA-256 checksum f0fe4a35c8d0dccb0960e18a8af7421be45262ca39f7edd4fd72f682c5a73c60
+  Compiled from "TestClass01.java"
+public class com.raptor.test01.TestClass01
+  minor version: 65535
+  major version: 58
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #140                        // com/raptor/test01/TestClass01
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 4, attributes: 3
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Class              #8            // com/raptor/test01/Literature
+    #8 = Utf8               com/raptor/test01/Literature
+    #9 = Class              #10           // com/raptor/test01/Book
+   #10 = Utf8               com/raptor/test01/Book
+   #11 = String             #12           // Harry Potter and the Prisoner of Azkaban
+   #12 = Utf8               Harry Potter and the Prisoner of Azkaban
+   #13 = String             #14           // J. K. Rowling
+   #14 = Utf8               J. K. Rowling
+   #15 = Methodref          #9.#16        // com/raptor/test01/Book."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+   #16 = NameAndType        #5:#17        // "<init>":(Ljava/lang/String;Ljava/lang/String;)V
+   #17 = Utf8               (Ljava/lang/String;Ljava/lang/String;)V
+   #18 = Class              #19           // com/raptor/test01/Magazine
+   #19 = Utf8               com/raptor/test01/Magazine
+   #20 = String             #21           // MAD
+   #21 = Utf8               MAD
+   #22 = String             #23           // #476
+   #23 = Utf8               #476
+   #24 = Methodref          #18.#16       // com/raptor/test01/Magazine."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+   #25 = Class              #26           // com/raptor/test01/MagazineArticle
+   #26 = Utf8               com/raptor/test01/MagazineArticle
+   #27 = String             #28           // #540
+   #28 = Utf8               #540
+   #29 = String             #30           // Donald Trump vs. The Bible
+   #30 = Utf8               Donald Trump vs. The Bible
+   #31 = String             #32           // Unknown
+   #32 = Utf8               Unknown
+   #33 = Methodref          #25.#34       // com/raptor/test01/MagazineArticle."<init>":(Lcom/raptor/test01/Magazine;Ljava/lang/String;Ljava/lang/String;)V
+   #34 = NameAndType        #5:#35        // "<init>":(Lcom/raptor/test01/Magazine;Ljava/lang/String;Ljava/lang/String;)V
+   #35 = Utf8               (Lcom/raptor/test01/Magazine;Ljava/lang/String;Ljava/lang/String;)V
+   #36 = String             #37           // The Way of Kings
+   #37 = Utf8               The Way of Kings
+   #38 = String             #39           // Brandon Sanderson
+   #39 = Utf8               Brandon Sanderson
+   #40 = Class              #41           // com/raptor/test01/WebArticle
+   #41 = Utf8               com/raptor/test01/WebArticle
+   #42 = Class              #43           // com/raptor/test01/Website
+   #43 = Utf8               com/raptor/test01/Website
+   #44 = String             #45           // BBC News
+   #45 = Utf8               BBC News
+   #46 = Class              #47           // java/net/URL
+   #47 = Utf8               java/net/URL
+   #48 = String             #49           // https://www.bbc.com/news
+   #49 = Utf8               https://www.bbc.com/news
+   #50 = Methodref          #46.#51       // java/net/URL."<init>":(Ljava/lang/String;)V
+   #51 = NameAndType        #5:#52        // "<init>":(Ljava/lang/String;)V
+   #52 = Utf8               (Ljava/lang/String;)V
+   #53 = Methodref          #42.#54       // com/raptor/test01/Website."<init>":(Ljava/lang/String;Ljava/net/URL;)V
+   #54 = NameAndType        #5:#55        // "<init>":(Ljava/lang/String;Ljava/net/URL;)V
+   #55 = Utf8               (Ljava/lang/String;Ljava/net/URL;)V
+   #56 = String             #57           // https://www.bbc.com/news/health-53889823
+   #57 = Utf8               https://www.bbc.com/news/health-53889823
+   #58 = String             #59           // Hong Kong reports \'first case\' of virus reinfection
+   #59 = Utf8               Hong Kong reports \'first case\' of virus reinfection
+   #60 = Methodref          #40.#61       // com/raptor/test01/WebArticle."<init>":(Lcom/raptor/test01/Website;Ljava/net/URL;Ljava/lang/String;Ljava/lang/String;)V
+   #61 = NameAndType        #5:#62        // "<init>":(Lcom/raptor/test01/Website;Ljava/net/URL;Ljava/lang/String;Ljava/lang/String;)V
+   #62 = Utf8               (Lcom/raptor/test01/Website;Ljava/net/URL;Ljava/lang/String;Ljava/lang/String;)V
+   #63 = String             #64           // Gamespot
+   #64 = Utf8               Gamespot
+   #65 = String             #66           // https://www.gamespot.com
+   #66 = Utf8               https://www.gamespot.com
+   #67 = String             #68           // https://www.gamespot.com/articles/crysis-remastered-launching-on-xbox-one-ps4-and-pc/1100-6481243/
+   #68 = Utf8               https://www.gamespot.com/articles/crysis-remastered-launching-on-xbox-one-ps4-and-pc/1100-6481243/
+   #69 = String             #70           // Crysis Remastered Launching On Xbox One, PS4, And PC This September
+   #70 = Utf8               Crysis Remastered Launching On Xbox One, PS4, And PC This September
+   #71 = String             #72           // Alessandro Barbosa
+   #72 = Utf8               Alessandro Barbosa
+   #73 = InterfaceMethodref #74.#75       // java/util/Set.of:([Ljava/lang/Object;)Ljava/util/Set;
+   #74 = Class              #76           // java/util/Set
+   #75 = NameAndType        #77:#78       // of:([Ljava/lang/Object;)Ljava/util/Set;
+   #76 = Utf8               java/util/Set
+   #77 = Utf8               of
+   #78 = Utf8               ([Ljava/lang/Object;)Ljava/util/Set;
+   #79 = InterfaceMethodref #74.#80       // java/util/Set.stream:()Ljava/util/stream/Stream;
+   #80 = NameAndType        #81:#82       // stream:()Ljava/util/stream/Stream;
+   #81 = Utf8               stream
+   #82 = Utf8               ()Ljava/util/stream/Stream;
+   #83 = Methodref          #84.#85       // java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+   #84 = Class              #86           // java/util/Objects
+   #85 = NameAndType        #87:#88       // requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+   #86 = Utf8               java/util/Objects
+   #87 = Utf8               requireNonNull
+   #88 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+   #89 = InvokeDynamic      #0:#90        // #0:test:(Ljava/lang/Class;)Ljava/util/function/Predicate;
+   #90 = NameAndType        #91:#92       // test:(Ljava/lang/Class;)Ljava/util/function/Predicate;
+   #91 = Utf8               test
+   #92 = Utf8               (Ljava/lang/Class;)Ljava/util/function/Predicate;
+   #93 = InterfaceMethodref #94.#95       // java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+   #94 = Class              #96           // java/util/stream/Stream
+   #95 = NameAndType        #97:#98       // filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+   #96 = Utf8               java/util/stream/Stream
+   #97 = Utf8               filter
+   #98 = Utf8               (Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+   #99 = InvokeDynamic      #1:#100       // #1:apply:(Ljava/lang/Class;)Ljava/util/function/Function;
+  #100 = NameAndType        #101:#102     // apply:(Ljava/lang/Class;)Ljava/util/function/Function;
+  #101 = Utf8               apply
+  #102 = Utf8               (Ljava/lang/Class;)Ljava/util/function/Function;
+  #103 = InterfaceMethodref #94.#104      // java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+  #104 = NameAndType        #105:#106     // map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+  #105 = Utf8               map
+  #106 = Utf8               (Ljava/util/function/Function;)Ljava/util/stream/Stream;
+  #107 = Methodref          #108.#109     // java/util/stream/Collectors.toSet:()Ljava/util/stream/Collector;
+  #108 = Class              #110          // java/util/stream/Collectors
+  #109 = NameAndType        #111:#112     // toSet:()Ljava/util/stream/Collector;
+  #110 = Utf8               java/util/stream/Collectors
+  #111 = Utf8               toSet
+  #112 = Utf8               ()Ljava/util/stream/Collector;
+  #113 = InterfaceMethodref #94.#114      // java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+  #114 = NameAndType        #115:#116     // collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+  #115 = Utf8               collect
+  #116 = Utf8               (Ljava/util/stream/Collector;)Ljava/lang/Object;
+  #117 = Class              #118          // com/raptor/test01/AuthoredLiterature
+  #118 = Utf8               com/raptor/test01/AuthoredLiterature
+  #119 = InvokeDynamic      #2:#100       // #2:apply:(Ljava/lang/Class;)Ljava/util/function/Function;
+  #120 = InvokeDynamic      #3:#121       // #3:test:()Ljava/util/function/Predicate;
+  #121 = NameAndType        #91:#122      // test:()Ljava/util/function/Predicate;
+  #122 = Utf8               ()Ljava/util/function/Predicate;
+  #123 = Class              #124          // com/raptor/test01/Article
+  #124 = Utf8               com/raptor/test01/Article
+  #125 = InvokeDynamic      #4:#100       // #4:apply:(Ljava/lang/Class;)Ljava/util/function/Function;
+  #126 = Fieldref           #127.#128     // java/lang/System.out:Ljava/io/PrintStream;
+  #127 = Class              #129          // java/lang/System
+  #128 = NameAndType        #130:#131     // out:Ljava/io/PrintStream;
+  #129 = Utf8               java/lang/System
+  #130 = Utf8               out
+  #131 = Utf8               Ljava/io/PrintStream;
+  #132 = String             #133          // books =
+  #133 = Utf8               books =
+  #134 = Methodref          #135.#136     // java/io/PrintStream.print:(Ljava/lang/String;)V
+  #135 = Class              #137          // java/io/PrintStream
+  #136 = NameAndType        #138:#52      // print:(Ljava/lang/String;)V
+  #137 = Utf8               java/io/PrintStream
+  #138 = Utf8               print
+  #139 = Methodref          #140.#141     // com/raptor/test01/TestClass01.printcollection:(Ljava/util/Collection;)V
+  #140 = Class              #142          // com/raptor/test01/TestClass01
+  #141 = NameAndType        #143:#144     // printcollection:(Ljava/util/Collection;)V
+  #142 = Utf8               com/raptor/test01/TestClass01
+  #143 = Utf8               printcollection
+  #144 = Utf8               (Ljava/util/Collection;)V
+  #145 = Methodref          #135.#146     // java/io/PrintStream.println:()V
+  #146 = NameAndType        #147:#6       // println:()V
+  #147 = Utf8               println
+  #148 = String             #149          // authoredLiterature =
+  #149 = Utf8               authoredLiterature =
+  #150 = String             #151          // unknownAuthoredLiterature =
+  #151 = Utf8               unknownAuthoredLiterature =
+  #152 = String             #153          // articles =
+  #153 = Utf8               articles =
+  #154 = Class              #155          // java/lang/Exception
+  #155 = Utf8               java/lang/Exception
+  #156 = Methodref          #154.#157     // java/lang/Exception.printStackTrace:()V
+  #157 = NameAndType        #158:#6       // printStackTrace:()V
+  #158 = Utf8               printStackTrace
+  #159 = String             #160          // null
+  #160 = Utf8               null
+  #161 = Methodref          #135.#162     // java/io/PrintStream.println:(Ljava/lang/String;)V
+  #162 = NameAndType        #147:#52      // println:(Ljava/lang/String;)V
+  #163 = Methodref          #135.#164     // java/io/PrintStream.println:(C)V
+  #164 = NameAndType        #147:#165     // println:(C)V
+  #165 = Utf8               (C)V
+  #166 = InterfaceMethodref #167.#168     // java/util/Collection.iterator:()Ljava/util/Iterator;
+  #167 = Class              #169          // java/util/Collection
+  #168 = NameAndType        #170:#171     // iterator:()Ljava/util/Iterator;
+  #169 = Utf8               java/util/Collection
+  #170 = Utf8               iterator
+  #171 = Utf8               ()Ljava/util/Iterator;
+  #172 = InterfaceMethodref #173.#174     // java/util/Iterator.hasNext:()Z
+  #173 = Class              #175          // java/util/Iterator
+  #174 = NameAndType        #176:#177     // hasNext:()Z
+  #175 = Utf8               java/util/Iterator
+  #176 = Utf8               hasNext
+  #177 = Utf8               ()Z
+  #178 = InterfaceMethodref #173.#179     // java/util/Iterator.next:()Ljava/lang/Object;
+  #179 = NameAndType        #180:#181     // next:()Ljava/lang/Object;
+  #180 = Utf8               next
+  #181 = Utf8               ()Ljava/lang/Object;
+  #182 = InvokeDynamic      #5:#183       // #5:makeConcatWithConstants:(Ljava/lang/Object;)Ljava/lang/String;
+  #183 = NameAndType        #184:#185     // makeConcatWithConstants:(Ljava/lang/Object;)Ljava/lang/String;
+  #184 = Utf8               makeConcatWithConstants
+  #185 = Utf8               (Ljava/lang/Object;)Ljava/lang/String;
+  #186 = Methodref          #135.#187     // java/io/PrintStream.print:(C)V
+  #187 = NameAndType        #138:#165     // print:(C)V
+  #188 = InterfaceMethodref #117.#189     // com/raptor/test01/AuthoredLiterature.author:()Ljava/lang/String;
+  #189 = NameAndType        #190:#191     // author:()Ljava/lang/String;
+  #190 = Utf8               author
+  #191 = Utf8               ()Ljava/lang/String;
+  #192 = Utf8               Code
+  #193 = Utf8               LineNumberTable
+  #194 = Utf8               main
+  #195 = Utf8               ([Ljava/lang/String;)V
+  #196 = Utf8               StackMapTable
+  #197 = Utf8               Exceptions
+  #198 = Utf8               Signature
+  #199 = Utf8               (Ljava/util/Collection<*>;)V
+  #200 = Utf8               lambda$main$0
+  #201 = Utf8               (Lcom/raptor/test01/AuthoredLiterature;)Z
+  #202 = Utf8               SourceFile
+  #203 = Utf8               TestClass01.java
+  #204 = Utf8               BootstrapMethods
+  #205 = MethodHandle       6:#206        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #206 = Methodref          #207.#208     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #207 = Class              #209          // java/lang/invoke/LambdaMetafactory
+  #208 = NameAndType        #210:#211     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #209 = Utf8               java/lang/invoke/LambdaMetafactory
+  #210 = Utf8               metafactory
+  #211 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #212 = MethodType         #213          //  (Ljava/lang/Object;)Z
+  #213 = Utf8               (Ljava/lang/Object;)Z
+  #214 = MethodHandle       5:#215        // REF_invokeVirtual java/lang/Class.isInstance:(Ljava/lang/Object;)Z
+  #215 = Methodref          #216.#217     // java/lang/Class.isInstance:(Ljava/lang/Object;)Z
+  #216 = Class              #218          // java/lang/Class
+  #217 = NameAndType        #219:#213     // isInstance:(Ljava/lang/Object;)Z
+  #218 = Utf8               java/lang/Class
+  #219 = Utf8               isInstance
+  #220 = MethodType         #221          //  (Lcom/raptor/test01/Literature;)Z
+  #221 = Utf8               (Lcom/raptor/test01/Literature;)Z
+  #222 = MethodType         #88           //  (Ljava/lang/Object;)Ljava/lang/Object;
+  #223 = MethodHandle       5:#224        // REF_invokeVirtual java/lang/Class.cast:(Ljava/lang/Object;)Ljava/lang/Object;
+  #224 = Methodref          #216.#225     // java/lang/Class.cast:(Ljava/lang/Object;)Ljava/lang/Object;
+  #225 = NameAndType        #226:#88      // cast:(Ljava/lang/Object;)Ljava/lang/Object;
+  #226 = Utf8               cast
+  #227 = MethodType         #228          //  (Lcom/raptor/test01/Literature;)Lcom/raptor/test01/Book;
+  #228 = Utf8               (Lcom/raptor/test01/Literature;)Lcom/raptor/test01/Book;
+  #229 = MethodType         #230          //  (Lcom/raptor/test01/Literature;)Lcom/raptor/test01/AuthoredLiterature;
+  #230 = Utf8               (Lcom/raptor/test01/Literature;)Lcom/raptor/test01/AuthoredLiterature;
+  #231 = MethodHandle       6:#232        // REF_invokeStatic com/raptor/test01/TestClass01.lambda$main$0:(Lcom/raptor/test01/AuthoredLiterature;)Z
+  #232 = Methodref          #140.#233     // com/raptor/test01/TestClass01.lambda$main$0:(Lcom/raptor/test01/AuthoredLiterature;)Z
+  #233 = NameAndType        #200:#201     // lambda$main$0:(Lcom/raptor/test01/AuthoredLiterature;)Z
+  #234 = MethodType         #201          //  (Lcom/raptor/test01/AuthoredLiterature;)Z
+  #235 = MethodType         #236          //  (Lcom/raptor/test01/Literature;)Lcom/raptor/test01/Article;
+  #236 = Utf8               (Lcom/raptor/test01/Literature;)Lcom/raptor/test01/Article;
+  #237 = MethodHandle       6:#238        // REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #238 = Methodref          #239.#240     // java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #239 = Class              #241          // java/lang/invoke/StringConcatFactory
+  #240 = NameAndType        #184:#242     // makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #241 = Utf8               java/lang/invoke/StringConcatFactory
+  #242 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #243 = String             #244          //     \u0001
+  #244 = Utf8                   \u0001
+  #245 = Utf8               InnerClasses
+  #246 = Class              #247          // java/lang/invoke/MethodHandles$Lookup
+  #247 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #248 = Class              #249          // java/lang/invoke/MethodHandles
+  #249 = Utf8               java/lang/invoke/MethodHandles
+  #250 = Utf8               Lookup
+{
+  public com.raptor.test01.TestClass01();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 10: 0
+
+  public static void main(java.lang.String[]) throws java.lang.Exception;
+    descriptor: ([Ljava/lang/String;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=11, locals=6, args_size=1
+         0: bipush        7
+         2: anewarray     #7                  // class com/raptor/test01/Literature
+         5: dup
+         6: iconst_0
+         7: new           #9                  // class com/raptor/test01/Book
+        10: dup
+        11: ldc           #11                 // String Harry Potter and the Prisoner of Azkaban
+        13: ldc           #13                 // String J. K. Rowling
+        15: invokespecial #15                 // Method com/raptor/test01/Book."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+        18: aastore
+        19: dup
+        20: iconst_1
+        21: new           #18                 // class com/raptor/test01/Magazine
+        24: dup
+        25: ldc           #20                 // String MAD
+        27: ldc           #22                 // String #476
+        29: invokespecial #24                 // Method com/raptor/test01/Magazine."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+        32: aastore
+        33: dup
+        34: iconst_2
+        35: new           #25                 // class com/raptor/test01/MagazineArticle
+        38: dup
+        39: new           #18                 // class com/raptor/test01/Magazine
+        42: dup
+        43: ldc           #20                 // String MAD
+        45: ldc           #27                 // String #540
+        47: invokespecial #24                 // Method com/raptor/test01/Magazine."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+        50: ldc           #29                 // String Donald Trump vs. The Bible
+        52: ldc           #31                 // String Unknown
+        54: invokespecial #33                 // Method com/raptor/test01/MagazineArticle."<init>":(Lcom/raptor/test01/Magazine;Ljava/lang/String;Ljava/lang/String;)V
+        57: aastore
+        58: dup
+        59: iconst_3
+        60: new           #9                  // class com/raptor/test01/Book
+        63: dup
+        64: ldc           #36                 // String The Way of Kings
+        66: ldc           #38                 // String Brandon Sanderson
+        68: invokespecial #15                 // Method com/raptor/test01/Book."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+        71: aastore
+        72: dup
+        73: iconst_4
+        74: new           #40                 // class com/raptor/test01/WebArticle
+        77: dup
+        78: new           #42                 // class com/raptor/test01/Website
+        81: dup
+        82: ldc           #44                 // String BBC News
+        84: new           #46                 // class java/net/URL
+        87: dup
+        88: ldc           #48                 // String https://www.bbc.com/news
+        90: invokespecial #50                 // Method java/net/URL."<init>":(Ljava/lang/String;)V
+        93: invokespecial #53                 // Method com/raptor/test01/Website."<init>":(Ljava/lang/String;Ljava/net/URL;)V
+        96: new           #46                 // class java/net/URL
+        99: dup
+       100: ldc           #56                 // String https://www.bbc.com/news/health-53889823
+       102: invokespecial #50                 // Method java/net/URL."<init>":(Ljava/lang/String;)V
+       105: ldc           #58                 // String Hong Kong reports \'first case\' of virus reinfection
+       107: ldc           #31                 // String Unknown
+       109: invokespecial #60                 // Method com/raptor/test01/WebArticle."<init>":(Lcom/raptor/test01/Website;Ljava/net/URL;Ljava/lang/String;Ljava/lang/String;)V
+       112: aastore
+       113: dup
+       114: iconst_5
+       115: new           #42                 // class com/raptor/test01/Website
+       118: dup
+       119: ldc           #63                 // String Gamespot
+       121: new           #46                 // class java/net/URL
+       124: dup
+       125: ldc           #65                 // String https://www.gamespot.com
+       127: invokespecial #50                 // Method java/net/URL."<init>":(Ljava/lang/String;)V
+       130: invokespecial #53                 // Method com/raptor/test01/Website."<init>":(Ljava/lang/String;Ljava/net/URL;)V
+       133: aastore
+       134: dup
+       135: bipush        6
+       137: new           #40                 // class com/raptor/test01/WebArticle
+       140: dup
+       141: new           #42                 // class com/raptor/test01/Website
+       144: dup
+       145: ldc           #63                 // String Gamespot
+       147: new           #46                 // class java/net/URL
+       150: dup
+       151: ldc           #65                 // String https://www.gamespot.com
+       153: invokespecial #50                 // Method java/net/URL."<init>":(Ljava/lang/String;)V
+       156: invokespecial #53                 // Method com/raptor/test01/Website."<init>":(Ljava/lang/String;Ljava/net/URL;)V
+       159: new           #46                 // class java/net/URL
+       162: dup
+       163: ldc           #67                 // String https://www.gamespot.com/articles/crysis-remastered-launching-on-xbox-one-ps4-and-pc/1100-6481243/
+       165: invokespecial #50                 // Method java/net/URL."<init>":(Ljava/lang/String;)V
+       168: ldc           #69                 // String Crysis Remastered Launching On Xbox One, PS4, And PC This September
+       170: ldc           #71                 // String Alessandro Barbosa
+       172: invokespecial #60                 // Method com/raptor/test01/WebArticle."<init>":(Lcom/raptor/test01/Website;Ljava/net/URL;Ljava/lang/String;Ljava/lang/String;)V
+       175: aastore
+       176: invokestatic  #73                 // InterfaceMethod java/util/Set.of:([Ljava/lang/Object;)Ljava/util/Set;
+       179: astore_1
+       180: aload_1
+       181: invokeinterface #79,  1           // InterfaceMethod java/util/Set.stream:()Ljava/util/stream/Stream;
+       186: ldc           #9                  // class com/raptor/test01/Book
+       188: dup
+       189: invokestatic  #83                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+       192: pop
+       193: invokedynamic #89,  0             // InvokeDynamic #0:test:(Ljava/lang/Class;)Ljava/util/function/Predicate;
+       198: invokeinterface #93,  2           // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+       203: ldc           #9                  // class com/raptor/test01/Book
+       205: dup
+       206: invokestatic  #83                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+       209: pop
+       210: invokedynamic #99,  0             // InvokeDynamic #1:apply:(Ljava/lang/Class;)Ljava/util/function/Function;
+       215: invokeinterface #103,  2          // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+       220: invokestatic  #107                // Method java/util/stream/Collectors.toSet:()Ljava/util/stream/Collector;
+       223: invokeinterface #113,  2          // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+       228: checkcast     #74                 // class java/util/Set
+       231: astore_2
+       232: aload_1
+       233: invokeinterface #79,  1           // InterfaceMethod java/util/Set.stream:()Ljava/util/stream/Stream;
+       238: ldc           #117                // class com/raptor/test01/AuthoredLiterature
+       240: dup
+       241: invokestatic  #83                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+       244: pop
+       245: invokedynamic #89,  0             // InvokeDynamic #0:test:(Ljava/lang/Class;)Ljava/util/function/Predicate;
+       250: invokeinterface #93,  2           // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+       255: ldc           #117                // class com/raptor/test01/AuthoredLiterature
+       257: dup
+       258: invokestatic  #83                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+       261: pop
+       262: invokedynamic #119,  0            // InvokeDynamic #2:apply:(Ljava/lang/Class;)Ljava/util/function/Function;
+       267: invokeinterface #103,  2          // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+       272: invokestatic  #107                // Method java/util/stream/Collectors.toSet:()Ljava/util/stream/Collector;
+       275: invokeinterface #113,  2          // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+       280: checkcast     #74                 // class java/util/Set
+       283: astore_3
+       284: aload_3
+       285: invokeinterface #79,  1           // InterfaceMethod java/util/Set.stream:()Ljava/util/stream/Stream;
+       290: invokedynamic #120,  0            // InvokeDynamic #3:test:()Ljava/util/function/Predicate;
+       295: invokeinterface #93,  2           // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+       300: invokestatic  #107                // Method java/util/stream/Collectors.toSet:()Ljava/util/stream/Collector;
+       303: invokeinterface #113,  2          // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+       308: checkcast     #74                 // class java/util/Set
+       311: astore        4
+       313: aload_1
+       314: invokeinterface #79,  1           // InterfaceMethod java/util/Set.stream:()Ljava/util/stream/Stream;
+       319: ldc           #123                // class com/raptor/test01/Article
+       321: dup
+       322: invokestatic  #83                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+       325: pop
+       326: invokedynamic #89,  0             // InvokeDynamic #0:test:(Ljava/lang/Class;)Ljava/util/function/Predicate;
+       331: invokeinterface #93,  2           // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+       336: ldc           #123                // class com/raptor/test01/Article
+       338: dup
+       339: invokestatic  #83                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+       342: pop
+       343: invokedynamic #125,  0            // InvokeDynamic #4:apply:(Ljava/lang/Class;)Ljava/util/function/Function;
+       348: invokeinterface #103,  2          // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+       353: invokestatic  #107                // Method java/util/stream/Collectors.toSet:()Ljava/util/stream/Collector;
+       356: invokeinterface #113,  2          // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+       361: checkcast     #74                 // class java/util/Set
+       364: astore        5
+       366: getstatic     #126                // Field java/lang/System.out:Ljava/io/PrintStream;
+       369: ldc           #132                // String books =
+       371: invokevirtual #134                // Method java/io/PrintStream.print:(Ljava/lang/String;)V
+       374: aload_2
+       375: invokestatic  #139                // Method printcollection:(Ljava/util/Collection;)V
+       378: getstatic     #126                // Field java/lang/System.out:Ljava/io/PrintStream;
+       381: invokevirtual #145                // Method java/io/PrintStream.println:()V
+       384: getstatic     #126                // Field java/lang/System.out:Ljava/io/PrintStream;
+       387: ldc           #148                // String authoredLiterature =
+       389: invokevirtual #134                // Method java/io/PrintStream.print:(Ljava/lang/String;)V
+       392: aload_3
+       393: invokestatic  #139                // Method printcollection:(Ljava/util/Collection;)V
+       396: getstatic     #126                // Field java/lang/System.out:Ljava/io/PrintStream;
+       399: invokevirtual #145                // Method java/io/PrintStream.println:()V
+       402: getstatic     #126                // Field java/lang/System.out:Ljava/io/PrintStream;
+       405: ldc           #150                // String unknownAuthoredLiterature =
+       407: invokevirtual #134                // Method java/io/PrintStream.print:(Ljava/lang/String;)V
+       410: aload         4
+       412: invokestatic  #139                // Method printcollection:(Ljava/util/Collection;)V
+       415: getstatic     #126                // Field java/lang/System.out:Ljava/io/PrintStream;
+       418: invokevirtual #145                // Method java/io/PrintStream.println:()V
+       421: getstatic     #126                // Field java/lang/System.out:Ljava/io/PrintStream;
+       424: ldc           #152                // String articles =
+       426: invokevirtual #134                // Method java/io/PrintStream.print:(Ljava/lang/String;)V
+       429: aload         5
+       431: invokestatic  #139                // Method printcollection:(Ljava/util/Collection;)V
+       434: getstatic     #126                // Field java/lang/System.out:Ljava/io/PrintStream;
+       437: invokevirtual #145                // Method java/io/PrintStream.println:()V
+       440: goto          450
+       443: astore_1
+       444: aload_1
+       445: invokevirtual #156                // Method java/lang/Exception.printStackTrace:()V
+       448: aload_1
+       449: athrow
+       450: return
+      Exception table:
+         from    to  target type
+             0   440   443   Class java/lang/Exception
+      LineNumberTable:
+        line 16: 0
+        line 28: 180
+        line 29: 189
+        line 30: 206
+        line 31: 220
+        line 33: 232
+        line 34: 241
+        line 35: 258
+        line 36: 272
+        line 38: 284
+        line 39: 295
+        line 40: 300
+        line 42: 313
+        line 43: 322
+        line 44: 339
+        line 45: 353
+        line 47: 366
+        line 48: 374
+        line 49: 378
+        line 51: 384
+        line 52: 392
+        line 53: 396
+        line 55: 402
+        line 56: 410
+        line 57: 415
+        line 59: 421
+        line 60: 429
+        line 61: 434
+        line 68: 440
+        line 63: 443
+        line 65: 444
+        line 66: 448
+        line 70: 450
+      StackMapTable: number_of_entries = 2
+        frame_type = 247 /* same_locals_1_stack_item_frame_extended */
+          offset_delta = 443
+          stack = [ class java/lang/Exception ]
+        frame_type = 6 /* same */
+    Exceptions:
+      throws java.lang.Exception
+
+  static void printcollection(java.util.Collection<?>);
+    descriptor: (Ljava/util/Collection;)V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=2, locals=4, args_size=1
+         0: aload_0
+         1: ifnonnull     13
+         4: getstatic     #126                // Field java/lang/System.out:Ljava/io/PrintStream;
+         7: ldc           #159                // String null
+         9: invokevirtual #161                // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+        12: return
+        13: getstatic     #126                // Field java/lang/System.out:Ljava/io/PrintStream;
+        16: bipush        91
+        18: invokevirtual #163                // Method java/io/PrintStream.println:(C)V
+        21: iconst_1
+        22: istore_1
+        23: aload_0
+        24: invokeinterface #166,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+        29: astore_2
+        30: aload_2
+        31: invokeinterface #172,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        36: ifeq          78
+        39: aload_2
+        40: invokeinterface #178,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        45: astore_3
+        46: iload_1
+        47: ifeq          55
+        50: iconst_0
+        51: istore_1
+        52: goto          63
+        55: getstatic     #126                // Field java/lang/System.out:Ljava/io/PrintStream;
+        58: bipush        44
+        60: invokevirtual #163                // Method java/io/PrintStream.println:(C)V
+        63: getstatic     #126                // Field java/lang/System.out:Ljava/io/PrintStream;
+        66: aload_3
+        67: invokedynamic #182,  0            // InvokeDynamic #5:makeConcatWithConstants:(Ljava/lang/Object;)Ljava/lang/String;
+        72: invokevirtual #134                // Method java/io/PrintStream.print:(Ljava/lang/String;)V
+        75: goto          30
+        78: getstatic     #126                // Field java/lang/System.out:Ljava/io/PrintStream;
+        81: invokevirtual #145                // Method java/io/PrintStream.println:()V
+        84: getstatic     #126                // Field java/lang/System.out:Ljava/io/PrintStream;
+        87: bipush        93
+        89: invokevirtual #186                // Method java/io/PrintStream.print:(C)V
+        92: return
+      LineNumberTable:
+        line 73: 0
+        line 74: 4
+        line 75: 12
+        line 78: 13
+        line 80: 21
+        line 81: 23
+        line 82: 46
+        line 83: 55
+        line 85: 63
+        line 86: 75
+        line 88: 78
+        line 89: 84
+        line 90: 92
+      StackMapTable: number_of_entries = 5
+        frame_type = 13 /* same */
+        frame_type = 253 /* append */
+          offset_delta = 16
+          locals = [ int, class java/util/Iterator ]
+        frame_type = 252 /* append */
+          offset_delta = 24
+          locals = [ class java/lang/Object ]
+        frame_type = 7 /* same */
+        frame_type = 249 /* chop */
+          offset_delta = 14
+    Signature: #199                         // (Ljava/util/Collection<*>;)V
+
+  private static boolean lambda$main$0(com.raptor.test01.AuthoredLiterature);
+    descriptor: (Lcom/raptor/test01/AuthoredLiterature;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokeinterface #188,  1          // InterfaceMethod com/raptor/test01/AuthoredLiterature.author:()Ljava/lang/String;
+         6: ldc           #31                 // String Unknown
+         8: if_acmpne     15
+        11: iconst_1
+        12: goto          16
+        15: iconst_0
+        16: ireturn
+      LineNumberTable:
+        line 39: 0
+      StackMapTable: number_of_entries = 2
+        frame_type = 15 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+}
+SourceFile: "TestClass01.java"
+BootstrapMethods:
+  0: #205 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #212 (Ljava/lang/Object;)Z
+      #214 REF_invokeVirtual java/lang/Class.isInstance:(Ljava/lang/Object;)Z
+      #220 (Lcom/raptor/test01/Literature;)Z
+  1: #205 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #222 (Ljava/lang/Object;)Ljava/lang/Object;
+      #223 REF_invokeVirtual java/lang/Class.cast:(Ljava/lang/Object;)Ljava/lang/Object;
+      #227 (Lcom/raptor/test01/Literature;)Lcom/raptor/test01/Book;
+  2: #205 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #222 (Ljava/lang/Object;)Ljava/lang/Object;
+      #223 REF_invokeVirtual java/lang/Class.cast:(Ljava/lang/Object;)Ljava/lang/Object;
+      #229 (Lcom/raptor/test01/Literature;)Lcom/raptor/test01/AuthoredLiterature;
+  3: #205 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #212 (Ljava/lang/Object;)Z
+      #231 REF_invokeStatic com/raptor/test01/TestClass01.lambda$main$0:(Lcom/raptor/test01/AuthoredLiterature;)Z
+      #234 (Lcom/raptor/test01/AuthoredLiterature;)Z
+  4: #205 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #222 (Ljava/lang/Object;)Ljava/lang/Object;
+      #223 REF_invokeVirtual java/lang/Class.cast:(Ljava/lang/Object;)Ljava/lang/Object;
+      #235 (Lcom/raptor/test01/Literature;)Lcom/raptor/test01/Article;
+  5: #237 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #243     \u0001
+InnerClasses:
+  public static final #250= #246 of #248; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles

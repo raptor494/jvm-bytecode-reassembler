@@ -1,0 +1,57 @@
+public class test.Container<T> {
+    
+    private T value;
+    
+    public <init>(final T value) {
+        aload this
+        invokespecial java.lang.Object.<init>: () void
+        aload this
+        aload value
+        putfield test.Container.value: T
+        return
+    }
+    
+    public T get() {
+        aload this
+        getfield test.Container.value: T
+        areturn
+    }
+    
+    public void set(T newvalue) {
+        aload this
+        aload newvalue
+        putfield test.Container.value: T
+        return
+    }
+    
+    public java.lang.String toString() {
+        aload this
+        invokevirtual test.Container.get: () T
+        invokevirtual java.lang.Object.toString: () java.lang.String
+        areturn
+    }
+    
+    public int hashCode() {
+        aload this
+        invokevirtual test.Container.get: () T
+        invokestatic  java.util.Objects.hashCode: (java.lang.Object) int
+        ireturn
+    }
+    
+    public boolean equals(java.lang.Object obj) {
+        aload obj
+        instanceof    test.Container
+        ifne          else_1
+        iconst_0
+        ireturn
+    else_1:
+        aload this
+        invokevirtual test.Container.get: () T
+        aload obj
+        checkcast     test.Container
+        invokevirtual test.Container.get: () java.lang.Object
+        invokestatic  java.util.Objects.equals: (java.lang.Object, java.lang.Object) boolean
+        ireturn
+    }
+    
+}

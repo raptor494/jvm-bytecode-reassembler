@@ -1,0 +1,7 @@
+Hello, world!
+#define test "test" \
++ "test2"
+String str = "This is a test";
+String str2 = "This is a "+test;
+#undef test
+return true; 

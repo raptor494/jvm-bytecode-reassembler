@@ -1,0 +1,68 @@
+#define LAMBDA_METAFACTORY invokestatic java.lang.invoke.LambdaMetafactory.metafactory: (java.lang.invoke.MethodHandles$Lookup, java.lang.String, java.lang.invoke.MethodType, java.lang.invoke.MethodType, java.lang.invoke.MethodHandle, java.lang.invoke.MethodType) java.lang.invoke.CallSite
+
+#define test_Test02
+
+#ifdef test_Test01
+public class test.Test01 {
+    
+    public test.Test01();
+      Code:
+        aload           this
+        invokespecial   java.lang.Object.<init>: () void
+        return
+        
+    public static void foo(java.util.List<? extends java.lang.Number> list);
+      Code:
+        aload           list
+        invokedynamic   { LAMBDA_METAFACTORY ((java.lang.Object) void, invokestatic test.Test01.lambda$0: (java.lang.Number) void, (java.lang.Number) void) }: accept: () java.util.function.Consumer
+        invokeinterface java.util.List.forEach: (java.util.function.Consumer) void
+        return
+        
+    private static synthetic void lambda$0(java.lang.Number num);
+      Code:
+        getstatic       java.lang.System.out: java.io.PrintStream
+        aload           num
+        invokevirtual   java.io.PrintStream.println: (java.lang.Object) void
+        return
+    
+}
+#endif
+
+#ifdef test_Test02
+public class test.Test02 {
+    
+    public final java.lang.String id;
+    public final int id;
+    
+    public test.Test02(java.lang.String, int);
+      Code:
+        aload 0         // this
+        invokespecial   java.lang.Object.<init>: () void
+        aload 0         // this
+        aload 1         // String arg0
+        putfield        id: java.lang.String
+        aload 0         // this
+        aload 2         // int arg1
+        putfield        id: int
+        return
+        
+    public int hashCode();
+      Code:
+        iconst_2
+        anewarray       java.lang.Object
+        dup             // copy the array
+        iconst_0
+        aload 0         // this
+        getfield        id: java.lang.String
+        aastore
+        dup             // the array
+        iconst_1
+        aload 0         // this
+        getfield        id: int
+        invokestatic    java.lang.Integer.valueOf: (int) java.lang.Integer
+        aastore
+        invokestatic    java.util.Objects.hash: (java.lang.Object[]) int
+        ireturn
+    
+}
+#endif

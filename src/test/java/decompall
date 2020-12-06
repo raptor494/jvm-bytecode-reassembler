@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# Change to the proper directory
+pushd $(dirname $0) > /dev/null
+dir='com/raptor/test'
+
+# Compile the .java files
+for file in $dir/*.java; do
+   '/cygdrive/c/Program Files/Java/jdk-14.0.1/bin/javac.exe' --enable-preview --source=14 $file
+done
+
+# Decompile the .class files
+for file in $dir/*.class; do
+    name=${file:0:-6}
+    name=${name//\//.}
+    '/cygdrive/c/Program Files/Java/jdk-14.0.1/bin/javap.exe' -c -p -v $name > $file.jvm
+done
+
+# Go back to the old directory
+popd > /dev/null

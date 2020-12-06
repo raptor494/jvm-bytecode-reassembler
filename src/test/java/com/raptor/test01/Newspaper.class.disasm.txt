@@ -1,0 +1,238 @@
+Classfile /C:/Users/flyin/Documents/Java/asm-recompiler/src/test/java/com/raptor/test01/Newspaper.class
+  Last modified Dec 2, 2020; size 1732 bytes
+  SHA-256 checksum 84259c68ed7d9a1ce1f3f455b47a91c673a90f3f547f7005f55875372076b292
+  Compiled from "TestClass01.java"
+final class com.raptor.test01.Newspaper extends java.lang.Record implements com.raptor.test01.Literature
+  minor version: 65535
+  major version: 58
+  flags: (0x0030) ACC_FINAL, ACC_SUPER
+  this_class: #32                         // com/raptor/test01/Newspaper
+  super_class: #2                         // java/lang/Record
+  interfaces: 1, fields: 2, methods: 6, attributes: 4
+Constant pool:
+   #1 = Methodref          #2.#3          // java/lang/Record."<init>":()V
+   #2 = Class              #4             // java/lang/Record
+   #3 = NameAndType        #5:#6          // "<init>":()V
+   #4 = Utf8               java/lang/Record
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = Class              #8             // java/lang/NullPointerException
+   #8 = Utf8               java/lang/NullPointerException
+   #9 = String             #10            // name
+  #10 = Utf8               name
+  #11 = Methodref          #7.#12         // java/lang/NullPointerException."<init>":(Ljava/lang/String;)V
+  #12 = NameAndType        #5:#13         // "<init>":(Ljava/lang/String;)V
+  #13 = Utf8               (Ljava/lang/String;)V
+  #14 = String             #15            // date
+  #15 = Utf8               date
+  #16 = Methodref          #17.#18        // java/lang/String.strip:()Ljava/lang/String;
+  #17 = Class              #19            // java/lang/String
+  #18 = NameAndType        #20:#21        // strip:()Ljava/lang/String;
+  #19 = Utf8               java/lang/String
+  #20 = Utf8               strip
+  #21 = Utf8               ()Ljava/lang/String;
+  #22 = Methodref          #17.#23        // java/lang/String.isEmpty:()Z
+  #23 = NameAndType        #24:#25        // isEmpty:()Z
+  #24 = Utf8               isEmpty
+  #25 = Utf8               ()Z
+  #26 = Class              #27            // java/lang/IllegalArgumentException
+  #27 = Utf8               java/lang/IllegalArgumentException
+  #28 = String             #29            // name may not be blank
+  #29 = Utf8               name may not be blank
+  #30 = Methodref          #26.#12        // java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+  #31 = Fieldref           #32.#33        // com/raptor/test01/Newspaper.name:Ljava/lang/String;
+  #32 = Class              #34            // com/raptor/test01/Newspaper
+  #33 = NameAndType        #10:#35        // name:Ljava/lang/String;
+  #34 = Utf8               com/raptor/test01/Newspaper
+  #35 = Utf8               Ljava/lang/String;
+  #36 = Fieldref           #32.#37        // com/raptor/test01/Newspaper.date:Ljava/util/Date;
+  #37 = NameAndType        #15:#38        // date:Ljava/util/Date;
+  #38 = Utf8               Ljava/util/Date;
+  #39 = Fieldref           #32.#33        // com/raptor/test01/Newspaper.name:Ljava/lang/String;
+  #40 = Fieldref           #32.#37        // com/raptor/test01/Newspaper.date:Ljava/util/Date;
+  #41 = InvokeDynamic      #0:#42         // #0:toString:(Lcom/raptor/test01/Newspaper;)Ljava/lang/String;
+  #42 = NameAndType        #43:#44        // toString:(Lcom/raptor/test01/Newspaper;)Ljava/lang/String;
+  #43 = Utf8               toString
+  #44 = Utf8               (Lcom/raptor/test01/Newspaper;)Ljava/lang/String;
+  #45 = InvokeDynamic      #0:#46         // #0:hashCode:(Lcom/raptor/test01/Newspaper;)I
+  #46 = NameAndType        #47:#48        // hashCode:(Lcom/raptor/test01/Newspaper;)I
+  #47 = Utf8               hashCode
+  #48 = Utf8               (Lcom/raptor/test01/Newspaper;)I
+  #49 = InvokeDynamic      #0:#50         // #0:equals:(Lcom/raptor/test01/Newspaper;Ljava/lang/Object;)Z
+  #50 = NameAndType        #51:#52        // equals:(Lcom/raptor/test01/Newspaper;Ljava/lang/Object;)Z
+  #51 = Utf8               equals
+  #52 = Utf8               (Lcom/raptor/test01/Newspaper;Ljava/lang/Object;)Z
+  #53 = Class              #54            // com/raptor/test01/Literature
+  #54 = Utf8               com/raptor/test01/Literature
+  #55 = Utf8               (Ljava/lang/String;Ljava/util/Date;)V
+  #56 = Utf8               Code
+  #57 = Utf8               LineNumberTable
+  #58 = Utf8               StackMapTable
+  #59 = Class              #60            // java/util/Date
+  #60 = Utf8               java/util/Date
+  #61 = Utf8               MethodParameters
+  #62 = Utf8               ()I
+  #63 = Utf8               (Ljava/lang/Object;)Z
+  #64 = Utf8               ()Ljava/util/Date;
+  #65 = Utf8               SourceFile
+  #66 = Utf8               TestClass01.java
+  #67 = Utf8               Record
+  #68 = Utf8               BootstrapMethods
+  #69 = MethodHandle       6:#70          // REF_invokeStatic java/lang/runtime/ObjectMethods.bootstrap:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/TypeDescriptor;Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/invoke/MethodHandle;)Ljava/lang/Object;
+  #70 = Methodref          #71.#72        // java/lang/runtime/ObjectMethods.bootstrap:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/TypeDescriptor;Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/invoke/MethodHandle;)Ljava/lang/Object;
+  #71 = Class              #73            // java/lang/runtime/ObjectMethods
+  #72 = NameAndType        #74:#75        // bootstrap:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/TypeDescriptor;Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/invoke/MethodHandle;)Ljava/lang/Object;
+  #73 = Utf8               java/lang/runtime/ObjectMethods
+  #74 = Utf8               bootstrap
+  #75 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/TypeDescriptor;Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/invoke/MethodHandle;)Ljava/lang/Object;
+  #76 = String             #77            // name;date
+  #77 = Utf8               name;date
+  #78 = MethodHandle       1:#31          // REF_getField com/raptor/test01/Newspaper.name:Ljava/lang/String;
+  #79 = MethodHandle       1:#36          // REF_getField com/raptor/test01/Newspaper.date:Ljava/util/Date;
+  #80 = Utf8               InnerClasses
+  #81 = Class              #82            // java/lang/invoke/MethodHandles$Lookup
+  #82 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #83 = Class              #84            // java/lang/invoke/MethodHandles
+  #84 = Utf8               java/lang/invoke/MethodHandles
+  #85 = Utf8               Lookup
+{
+  private final java.lang.String name;
+    descriptor: Ljava/lang/String;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+
+  private final java.util.Date date;
+    descriptor: Ljava/util/Date;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+
+  public com.raptor.test01.Newspaper(java.lang.String, java.util.Date);
+    descriptor: (Ljava/lang/String;Ljava/util/Date;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Record."<init>":()V
+         4: aload_1
+         5: ifnonnull     18
+         8: new           #7                  // class java/lang/NullPointerException
+        11: dup
+        12: ldc           #9                  // String name
+        14: invokespecial #11                 // Method java/lang/NullPointerException."<init>":(Ljava/lang/String;)V
+        17: athrow
+        18: aload_2
+        19: ifnonnull     32
+        22: new           #7                  // class java/lang/NullPointerException
+        25: dup
+        26: ldc           #14                 // String date
+        28: invokespecial #11                 // Method java/lang/NullPointerException."<init>":(Ljava/lang/String;)V
+        31: athrow
+        32: aload_1
+        33: invokevirtual #16                 // Method java/lang/String.strip:()Ljava/lang/String;
+        36: dup
+        37: astore_1
+        38: invokevirtual #22                 // Method java/lang/String.isEmpty:()Z
+        41: ifeq          54
+        44: new           #26                 // class java/lang/IllegalArgumentException
+        47: dup
+        48: ldc           #28                 // String name may not be blank
+        50: invokespecial #30                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+        53: athrow
+        54: aload_0
+        55: aload_1
+        56: putfield      #31                 // Field name:Ljava/lang/String;
+        59: aload_0
+        60: aload_2
+        61: putfield      #36                 // Field date:Ljava/util/Date;
+        64: return
+      LineNumberTable:
+        line 141: 0
+        line 142: 4
+        line 143: 18
+        line 144: 32
+        line 146: 54
+        line 147: 59
+        line 148: 64
+      StackMapTable: number_of_entries = 3
+        frame_type = 255 /* full_frame */
+          offset_delta = 18
+          locals = [ class com/raptor/test01/Newspaper, class java/lang/String, class java/util/Date ]
+          stack = []
+        frame_type = 13 /* same */
+        frame_type = 21 /* same */
+    MethodParameters:
+      Name                           Flags
+      name
+      date
+
+  public java.lang.String toString();
+    descriptor: ()Ljava/lang/String;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokedynamic #41,  0             // InvokeDynamic #0:toString:(Lcom/raptor/test01/Newspaper;)Ljava/lang/String;
+         6: areturn
+      LineNumberTable:
+        line 139: 0
+
+  public final int hashCode();
+    descriptor: ()I
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokedynamic #45,  0             // InvokeDynamic #0:hashCode:(Lcom/raptor/test01/Newspaper;)I
+         6: ireturn
+      LineNumberTable:
+        line 139: 0
+
+  public final boolean equals(java.lang.Object);
+    descriptor: (Ljava/lang/Object;)Z
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokedynamic #49,  0             // InvokeDynamic #0:equals:(Lcom/raptor/test01/Newspaper;Ljava/lang/Object;)Z
+         7: ireturn
+      LineNumberTable:
+        line 139: 0
+
+  public java.lang.String name();
+    descriptor: ()Ljava/lang/String;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #39                 // Field name:Ljava/lang/String;
+         4: areturn
+      LineNumberTable:
+        line 139: 0
+
+  public java.util.Date date();
+    descriptor: ()Ljava/util/Date;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #40                 // Field date:Ljava/util/Date;
+         4: areturn
+      LineNumberTable:
+        line 139: 0
+}
+SourceFile: "TestClass01.java"
+Record:
+  java.lang.String name;
+    descriptor: Ljava/lang/String;
+
+  java.util.Date date;
+    descriptor: Ljava/util/Date;
+
+BootstrapMethods:
+  0: #69 REF_invokeStatic java/lang/runtime/ObjectMethods.bootstrap:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/TypeDescriptor;Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/invoke/MethodHandle;)Ljava/lang/Object;
+    Method arguments:
+      #32 com/raptor/test01/Newspaper
+      #76 name;date
+      #78 REF_getField com/raptor/test01/Newspaper.name:Ljava/lang/String;
+      #79 REF_getField com/raptor/test01/Newspaper.date:Ljava/util/Date;
+InnerClasses:
+  public static final #85= #81 of #83;    // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles

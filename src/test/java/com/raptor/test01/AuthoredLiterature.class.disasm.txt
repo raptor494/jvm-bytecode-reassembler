@@ -1,0 +1,28 @@
+Classfile /C:/Users/flyin/Documents/Java/asm-recompiler/src/test/java/com/raptor/test01/AuthoredLiterature.class
+  Last modified Dec 2, 2020; size 204 bytes
+  SHA-256 checksum 51ed34edff6cfe4c96829741fe28f716f60ebbb178e702dd180fefaebd90e35c
+  Compiled from "TestClass01.java"
+interface com.raptor.test01.AuthoredLiterature extends com.raptor.test01.Literature
+  minor version: 65535
+  major version: 58
+  flags: (0x0600) ACC_INTERFACE, ACC_ABSTRACT
+  this_class: #1                          // com/raptor/test01/AuthoredLiterature
+  super_class: #3                         // java/lang/Object
+  interfaces: 1, fields: 0, methods: 1, attributes: 1
+Constant pool:
+   #1 = Class              #2             // com/raptor/test01/AuthoredLiterature
+   #2 = Utf8               com/raptor/test01/AuthoredLiterature
+   #3 = Class              #4             // java/lang/Object
+   #4 = Utf8               java/lang/Object
+   #5 = Class              #6             // com/raptor/test01/Literature
+   #6 = Utf8               com/raptor/test01/Literature
+   #7 = Utf8               author
+   #8 = Utf8               ()Ljava/lang/String;
+   #9 = Utf8               SourceFile
+  #10 = Utf8               TestClass01.java
+{
+  public abstract java.lang.String author();
+    descriptor: ()Ljava/lang/String;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+}
+SourceFile: "TestClass01.java"

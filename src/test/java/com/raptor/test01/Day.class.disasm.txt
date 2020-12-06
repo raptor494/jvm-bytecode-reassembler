@@ -1,0 +1,274 @@
+Classfile /C:/Users/flyin/Documents/Java/asm-recompiler/src/test/java/com/raptor/test01/Day.class
+  Last modified Dec 2, 2020; size 1354 bytes
+  SHA-256 checksum 328efb8cec5ef6fc80ec187da333f9198acfbd1d62feb65fdf7ffc3a3d5d9316
+  Compiled from "TestClass01.java"
+final class com.raptor.test01.Day extends java.lang.Enum<com.raptor.test01.Day>
+  minor version: 65535
+  major version: 58
+  flags: (0x4030) ACC_FINAL, ACC_SUPER, ACC_ENUM
+  this_class: #2                          // com/raptor/test01/Day
+  super_class: #13                        // java/lang/Enum
+  interfaces: 0, fields: 9, methods: 4, attributes: 2
+Constant pool:
+   #1 = Fieldref           #2.#3          // com/raptor/test01/Day.$VALUES:[Lcom/raptor/test01/Day;
+   #2 = Class              #4             // com/raptor/test01/Day
+   #3 = NameAndType        #5:#6          // $VALUES:[Lcom/raptor/test01/Day;
+   #4 = Utf8               com/raptor/test01/Day
+   #5 = Utf8               $VALUES
+   #6 = Utf8               [Lcom/raptor/test01/Day;
+   #7 = Methodref          #8.#9          // "[Lcom/raptor/test01/Day;".clone:()Ljava/lang/Object;
+   #8 = Class              #6             // "[Lcom/raptor/test01/Day;"
+   #9 = NameAndType        #10:#11        // clone:()Ljava/lang/Object;
+  #10 = Utf8               clone
+  #11 = Utf8               ()Ljava/lang/Object;
+  #12 = Methodref          #13.#14        // java/lang/Enum.valueOf:(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+  #13 = Class              #15            // java/lang/Enum
+  #14 = NameAndType        #16:#17        // valueOf:(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+  #15 = Utf8               java/lang/Enum
+  #16 = Utf8               valueOf
+  #17 = Utf8               (Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+  #18 = Methodref          #13.#19        // java/lang/Enum."<init>":(Ljava/lang/String;I)V
+  #19 = NameAndType        #20:#21        // "<init>":(Ljava/lang/String;I)V
+  #20 = Utf8               <init>
+  #21 = Utf8               (Ljava/lang/String;I)V
+  #22 = Fieldref           #2.#23         // com/raptor/test01/Day.abbreviation:Ljava/lang/String;
+  #23 = NameAndType        #24:#25        // abbreviation:Ljava/lang/String;
+  #24 = Utf8               abbreviation
+  #25 = Utf8               Ljava/lang/String;
+  #26 = String             #27            // MONDAY
+  #27 = Utf8               MONDAY
+  #28 = String             #29            // Mon.
+  #29 = Utf8               Mon.
+  #30 = Methodref          #2.#31         // com/raptor/test01/Day."<init>":(Ljava/lang/String;ILjava/lang/String;)V
+  #31 = NameAndType        #20:#32        // "<init>":(Ljava/lang/String;ILjava/lang/String;)V
+  #32 = Utf8               (Ljava/lang/String;ILjava/lang/String;)V
+  #33 = Fieldref           #2.#34         // com/raptor/test01/Day.MONDAY:Lcom/raptor/test01/Day;
+  #34 = NameAndType        #27:#35        // MONDAY:Lcom/raptor/test01/Day;
+  #35 = Utf8               Lcom/raptor/test01/Day;
+  #36 = String             #37            // TUESDAY
+  #37 = Utf8               TUESDAY
+  #38 = String             #39            // Tues.
+  #39 = Utf8               Tues.
+  #40 = Fieldref           #2.#41         // com/raptor/test01/Day.TUESDAY:Lcom/raptor/test01/Day;
+  #41 = NameAndType        #37:#35        // TUESDAY:Lcom/raptor/test01/Day;
+  #42 = String             #43            // WEDNESDAY
+  #43 = Utf8               WEDNESDAY
+  #44 = String             #45            // Wed.
+  #45 = Utf8               Wed.
+  #46 = Fieldref           #2.#47         // com/raptor/test01/Day.WEDNESDAY:Lcom/raptor/test01/Day;
+  #47 = NameAndType        #43:#35        // WEDNESDAY:Lcom/raptor/test01/Day;
+  #48 = String             #49            // THURSDAY
+  #49 = Utf8               THURSDAY
+  #50 = String             #51            // Thurs.
+  #51 = Utf8               Thurs.
+  #52 = Fieldref           #2.#53         // com/raptor/test01/Day.THURSDAY:Lcom/raptor/test01/Day;
+  #53 = NameAndType        #49:#35        // THURSDAY:Lcom/raptor/test01/Day;
+  #54 = String             #55            // FRIDAY
+  #55 = Utf8               FRIDAY
+  #56 = String             #57            // Fri.
+  #57 = Utf8               Fri.
+  #58 = Fieldref           #2.#59         // com/raptor/test01/Day.FRIDAY:Lcom/raptor/test01/Day;
+  #59 = NameAndType        #55:#35        // FRIDAY:Lcom/raptor/test01/Day;
+  #60 = String             #61            // SATURDAY
+  #61 = Utf8               SATURDAY
+  #62 = String             #63            // Sat.
+  #63 = Utf8               Sat.
+  #64 = Fieldref           #2.#65         // com/raptor/test01/Day.SATURDAY:Lcom/raptor/test01/Day;
+  #65 = NameAndType        #61:#35        // SATURDAY:Lcom/raptor/test01/Day;
+  #66 = String             #67            // SUNDAY
+  #67 = Utf8               SUNDAY
+  #68 = String             #69            // Sun.
+  #69 = Utf8               Sun.
+  #70 = Fieldref           #2.#71         // com/raptor/test01/Day.SUNDAY:Lcom/raptor/test01/Day;
+  #71 = NameAndType        #67:#35        // SUNDAY:Lcom/raptor/test01/Day;
+  #72 = Utf8               values
+  #73 = Utf8               ()[Lcom/raptor/test01/Day;
+  #74 = Utf8               Code
+  #75 = Utf8               LineNumberTable
+  #76 = Utf8               (Ljava/lang/String;)Lcom/raptor/test01/Day;
+  #77 = Utf8               Signature
+  #78 = Utf8               (Ljava/lang/String;)V
+  #79 = Utf8               <clinit>
+  #80 = Utf8               ()V
+  #81 = Utf8               Ljava/lang/Enum<Lcom/raptor/test01/Day;>;
+  #82 = Utf8               SourceFile
+  #83 = Utf8               TestClass01.java
+{
+  public static final com.raptor.test01.Day MONDAY;
+    descriptor: Lcom/raptor/test01/Day;
+    flags: (0x4019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL, ACC_ENUM
+
+  public static final com.raptor.test01.Day TUESDAY;
+    descriptor: Lcom/raptor/test01/Day;
+    flags: (0x4019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL, ACC_ENUM
+
+  public static final com.raptor.test01.Day WEDNESDAY;
+    descriptor: Lcom/raptor/test01/Day;
+    flags: (0x4019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL, ACC_ENUM
+
+  public static final com.raptor.test01.Day THURSDAY;
+    descriptor: Lcom/raptor/test01/Day;
+    flags: (0x4019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL, ACC_ENUM
+
+  public static final com.raptor.test01.Day FRIDAY;
+    descriptor: Lcom/raptor/test01/Day;
+    flags: (0x4019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL, ACC_ENUM
+
+  public static final com.raptor.test01.Day SATURDAY;
+    descriptor: Lcom/raptor/test01/Day;
+    flags: (0x4019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL, ACC_ENUM
+
+  public static final com.raptor.test01.Day SUNDAY;
+    descriptor: Lcom/raptor/test01/Day;
+    flags: (0x4019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL, ACC_ENUM
+
+  public final java.lang.String abbreviation;
+    descriptor: Ljava/lang/String;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+
+  private static final com.raptor.test01.Day[] $VALUES;
+    descriptor: [Lcom/raptor/test01/Day;
+    flags: (0x101a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL, ACC_SYNTHETIC
+
+  public static com.raptor.test01.Day[] values();
+    descriptor: ()[Lcom/raptor/test01/Day;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #1                  // Field $VALUES:[Lcom/raptor/test01/Day;
+         3: invokevirtual #7                  // Method "[Lcom/raptor/test01/Day;".clone:()Ljava/lang/Object;
+         6: checkcast     #8                  // class "[Lcom/raptor/test01/Day;"
+         9: areturn
+      LineNumberTable:
+        line 317: 0
+
+  public static com.raptor.test01.Day valueOf(java.lang.String);
+    descriptor: (Ljava/lang/String;)Lcom/raptor/test01/Day;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: ldc           #2                  // class com/raptor/test01/Day
+         2: aload_0
+         3: invokestatic  #12                 // Method java/lang/Enum.valueOf:(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+         6: checkcast     #2                  // class com/raptor/test01/Day
+         9: areturn
+      LineNumberTable:
+        line 317: 0
+
+  private com.raptor.test01.Day(java.lang.String);
+    descriptor: (Ljava/lang/String;ILjava/lang/String;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=4, args_size=4
+         0: aload_0
+         1: aload_1
+         2: iload_2
+         3: invokespecial #18                 // Method java/lang/Enum."<init>":(Ljava/lang/String;I)V
+         6: aload_0
+         7: aload_3
+         8: putfield      #22                 // Field abbreviation:Ljava/lang/String;
+        11: return
+      LineNumberTable:
+        line 328: 0
+        line 329: 6
+        line 330: 11
+    Signature: #78                          // (Ljava/lang/String;)V
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=5, locals=0, args_size=0
+         0: new           #2                  // class com/raptor/test01/Day
+         3: dup
+         4: ldc           #26                 // String MONDAY
+         6: iconst_0
+         7: ldc           #28                 // String Mon.
+         9: invokespecial #30                 // Method "<init>":(Ljava/lang/String;ILjava/lang/String;)V
+        12: putstatic     #33                 // Field MONDAY:Lcom/raptor/test01/Day;
+        15: new           #2                  // class com/raptor/test01/Day
+        18: dup
+        19: ldc           #36                 // String TUESDAY
+        21: iconst_1
+        22: ldc           #38                 // String Tues.
+        24: invokespecial #30                 // Method "<init>":(Ljava/lang/String;ILjava/lang/String;)V
+        27: putstatic     #40                 // Field TUESDAY:Lcom/raptor/test01/Day;
+        30: new           #2                  // class com/raptor/test01/Day
+        33: dup
+        34: ldc           #42                 // String WEDNESDAY
+        36: iconst_2
+        37: ldc           #44                 // String Wed.
+        39: invokespecial #30                 // Method "<init>":(Ljava/lang/String;ILjava/lang/String;)V
+        42: putstatic     #46                 // Field WEDNESDAY:Lcom/raptor/test01/Day;
+        45: new           #2                  // class com/raptor/test01/Day
+        48: dup
+        49: ldc           #48                 // String THURSDAY
+        51: iconst_3
+        52: ldc           #50                 // String Thurs.
+        54: invokespecial #30                 // Method "<init>":(Ljava/lang/String;ILjava/lang/String;)V
+        57: putstatic     #52                 // Field THURSDAY:Lcom/raptor/test01/Day;
+        60: new           #2                  // class com/raptor/test01/Day
+        63: dup
+        64: ldc           #54                 // String FRIDAY
+        66: iconst_4
+        67: ldc           #56                 // String Fri.
+        69: invokespecial #30                 // Method "<init>":(Ljava/lang/String;ILjava/lang/String;)V
+        72: putstatic     #58                 // Field FRIDAY:Lcom/raptor/test01/Day;
+        75: new           #2                  // class com/raptor/test01/Day
+        78: dup
+        79: ldc           #60                 // String SATURDAY
+        81: iconst_5
+        82: ldc           #62                 // String Sat.
+        84: invokespecial #30                 // Method "<init>":(Ljava/lang/String;ILjava/lang/String;)V
+        87: putstatic     #64                 // Field SATURDAY:Lcom/raptor/test01/Day;
+        90: new           #2                  // class com/raptor/test01/Day
+        93: dup
+        94: ldc           #66                 // String SUNDAY
+        96: bipush        6
+        98: ldc           #68                 // String Sun.
+       100: invokespecial #30                 // Method "<init>":(Ljava/lang/String;ILjava/lang/String;)V
+       103: putstatic     #70                 // Field SUNDAY:Lcom/raptor/test01/Day;
+       106: bipush        7
+       108: anewarray     #2                  // class com/raptor/test01/Day
+       111: dup
+       112: iconst_0
+       113: getstatic     #33                 // Field MONDAY:Lcom/raptor/test01/Day;
+       116: aastore
+       117: dup
+       118: iconst_1
+       119: getstatic     #40                 // Field TUESDAY:Lcom/raptor/test01/Day;
+       122: aastore
+       123: dup
+       124: iconst_2
+       125: getstatic     #46                 // Field WEDNESDAY:Lcom/raptor/test01/Day;
+       128: aastore
+       129: dup
+       130: iconst_3
+       131: getstatic     #52                 // Field THURSDAY:Lcom/raptor/test01/Day;
+       134: aastore
+       135: dup
+       136: iconst_4
+       137: getstatic     #58                 // Field FRIDAY:Lcom/raptor/test01/Day;
+       140: aastore
+       141: dup
+       142: iconst_5
+       143: getstatic     #64                 // Field SATURDAY:Lcom/raptor/test01/Day;
+       146: aastore
+       147: dup
+       148: bipush        6
+       150: getstatic     #70                 // Field SUNDAY:Lcom/raptor/test01/Day;
+       153: aastore
+       154: putstatic     #1                  // Field $VALUES:[Lcom/raptor/test01/Day;
+       157: return
+      LineNumberTable:
+        line 318: 0
+        line 319: 15
+        line 320: 30
+        line 321: 45
+        line 322: 60
+        line 323: 75
+        line 324: 90
+        line 317: 106
+}
+Signature: #81                          // Ljava/lang/Enum<Lcom/raptor/test01/Day;>;
+SourceFile: "TestClass01.java"

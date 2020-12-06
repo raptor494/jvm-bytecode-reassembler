@@ -1,0 +1,64 @@
+Classfile /C:/Users/flyin/Documents/Java/asm-recompiler/src/test/java/com/raptor/test02/TestClass02$B$D.class
+  Last modified Dec 3, 2020; size 511 bytes
+  SHA-256 checksum d14eefe7f0ebb502b496bf3f97209c12006f035109ff0e1bd2cb10c4570e5744
+  Compiled from "TestClass02.java"
+public class com.raptor.test02.TestClass02$B$D<E extends T> extends java.lang.Object
+  minor version: 65535
+  major version: 58
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // com/raptor/test02/TestClass02$B$D
+  super_class: #8                         // java/lang/Object
+  interfaces: 0, fields: 1, methods: 1, attributes: 4
+Constant pool:
+   #1 = Fieldref           #2.#3          // com/raptor/test02/TestClass02$B$D.this$1:Lcom/raptor/test02/TestClass02$B;
+   #2 = Class              #4             // com/raptor/test02/TestClass02$B$D
+   #3 = NameAndType        #5:#6          // this$1:Lcom/raptor/test02/TestClass02$B;
+   #4 = Utf8               com/raptor/test02/TestClass02$B$D
+   #5 = Utf8               this$1
+   #6 = Utf8               Lcom/raptor/test02/TestClass02$B;
+   #7 = Methodref          #8.#9          // java/lang/Object."<init>":()V
+   #8 = Class              #10            // java/lang/Object
+   #9 = NameAndType        #11:#12        // "<init>":()V
+  #10 = Utf8               java/lang/Object
+  #11 = Utf8               <init>
+  #12 = Utf8               ()V
+  #13 = Utf8               (Lcom/raptor/test02/TestClass02$B;)V
+  #14 = Utf8               Code
+  #15 = Utf8               LineNumberTable
+  #16 = Utf8               Signature
+  #17 = Utf8               <E:TT;>Ljava/lang/Object;
+  #18 = Utf8               SourceFile
+  #19 = Utf8               TestClass02.java
+  #20 = Utf8               NestHost
+  #21 = Class              #22            // com/raptor/test02/TestClass02
+  #22 = Utf8               com/raptor/test02/TestClass02
+  #23 = Utf8               InnerClasses
+  #24 = Class              #25            // com/raptor/test02/TestClass02$B
+  #25 = Utf8               com/raptor/test02/TestClass02$B
+  #26 = Utf8               B
+  #27 = Utf8               D
+{
+  final com.raptor.test02.TestClass02$B this$1;
+    descriptor: Lcom/raptor/test02/TestClass02$B;
+    flags: (0x1010) ACC_FINAL, ACC_SYNTHETIC
+
+  public com.raptor.test02.TestClass02$B$D(com.raptor.test02.TestClass02$B);
+    descriptor: (Lcom/raptor/test02/TestClass02$B;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: putfield      #1                  // Field this$1:Lcom/raptor/test02/TestClass02$B;
+         5: aload_0
+         6: invokespecial #7                  // Method java/lang/Object."<init>":()V
+         9: return
+      LineNumberTable:
+        line 13: 0
+}
+Signature: #17                          // <E:TT;>Ljava/lang/Object;
+SourceFile: "TestClass02.java"
+NestHost: class com/raptor/test02/TestClass02
+InnerClasses:
+  public #26= #24 of #21;                 // B=class com/raptor/test02/TestClass02$B of class com/raptor/test02/TestClass02
+  public #27= #2 of #24;                  // D=class com/raptor/test02/TestClass02$B$D of class com/raptor/test02/TestClass02$B

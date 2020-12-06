@@ -1,0 +1,30 @@
+Classfile /C:/Users/flyin/Documents/Java/asm-recompiler/src/test/java/com/raptor/test04/I4.class
+  Last modified Dec 3, 2020; size 323 bytes
+  SHA-256 checksum b67dfe4ea03f9b412652215e863f1a28ecdbbadb3eb9496875e85bdeab1c2922
+  Compiled from "TestClass04.java"
+interface com.raptor.test04.I4 extends com.raptor.test04.I1, com.raptor.test04.I2, com.raptor.test04.I3<java.lang.String>
+  minor version: 65535
+  major version: 58
+  flags: (0x0600) ACC_INTERFACE, ACC_ABSTRACT
+  this_class: #1                          // com/raptor/test04/I4
+  super_class: #3                         // java/lang/Object
+  interfaces: 3, fields: 0, methods: 0, attributes: 2
+Constant pool:
+   #1 = Class              #2             // com/raptor/test04/I4
+   #2 = Utf8               com/raptor/test04/I4
+   #3 = Class              #4             // java/lang/Object
+   #4 = Utf8               java/lang/Object
+   #5 = Class              #6             // com/raptor/test04/I1
+   #6 = Utf8               com/raptor/test04/I1
+   #7 = Class              #8             // com/raptor/test04/I2
+   #8 = Utf8               com/raptor/test04/I2
+   #9 = Class              #10            // com/raptor/test04/I3
+  #10 = Utf8               com/raptor/test04/I3
+  #11 = Utf8               Signature
+  #12 = Utf8               Ljava/lang/Object;Lcom/raptor/test04/I1;Lcom/raptor/test04/I2;Lcom/raptor/test04/I3<Ljava/lang/String;>;
+  #13 = Utf8               SourceFile
+  #14 = Utf8               TestClass04.java
+{
+}
+Signature: #12                          // Ljava/lang/Object;Lcom/raptor/test04/I1;Lcom/raptor/test04/I2;Lcom/raptor/test04/I3<Ljava/lang/String;>;
+SourceFile: "TestClass04.java"

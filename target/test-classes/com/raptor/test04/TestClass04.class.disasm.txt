@@ -1,0 +1,130 @@
+Classfile /C:/Users/flyin/Documents/Java/asm-recompiler/src/test/java/com/raptor/test04/TestClass04.class
+  Last modified Dec 3, 2020; size 1109 bytes
+  SHA-256 checksum c85406d17bed5a7cb4f7d10465e1e7931d1c84e75efd87ae3c126480949d2620
+  Compiled from "TestClass04.java"
+public interface com.raptor.test04.TestClass04<F extends java.lang.Object>
+  minor version: 65535
+  major version: 58
+  flags: (0x0601) ACC_PUBLIC, ACC_INTERFACE, ACC_ABSTRACT
+  this_class: #3                          // com/raptor/test04/TestClass04
+  super_class: #5                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 12, attributes: 2
+Constant pool:
+   #1 = Class              #2             // "[[[I"
+   #2 = Utf8               [[[I
+   #3 = Class              #4             // com/raptor/test04/TestClass04
+   #4 = Utf8               com/raptor/test04/TestClass04
+   #5 = Class              #6             // java/lang/Object
+   #6 = Utf8               java/lang/Object
+   #7 = Utf8               f0
+   #8 = Utf8               ()V
+   #9 = Utf8               Signature
+  #10 = Utf8               <E:Ljava/lang/Object;>()V
+  #11 = Utf8               f1
+  #12 = Utf8               <E:Lcom/raptor/test04/C1;>()V
+  #13 = Utf8               f2
+  #14 = Utf8               <E::Lcom/raptor/test04/I1;>()V
+  #15 = Utf8               f3
+  #16 = Utf8               <E1:Lcom/raptor/test04/C1;E2::Lcom/raptor/test04/I2;>()V
+  #17 = Utf8               f4
+  #18 = Utf8               <E:Lcom/raptor/test04/C2;:Lcom/raptor/test04/I2;>()V
+  #19 = Utf8               f5
+  #20 = Utf8               <E::Lcom/raptor/test04/I1;:Lcom/raptor/test04/I2;>()V
+  #21 = Utf8               f6
+  #22 = Utf8               <E:Lcom/raptor/test04/C2;:Lcom/raptor/test04/I1;:Lcom/raptor/test04/I2;>()V
+  #23 = Utf8               f7
+  #24 = Utf8               <E::Lcom/raptor/test04/I3<Lcom/raptor/test04/C1;>;>()V
+  #25 = Utf8               f8
+  #26 = Utf8               (Ljava/lang/Object;)V
+  #27 = Utf8               Exceptions
+  #28 = Class              #29            // java/lang/Throwable
+  #29 = Utf8               java/lang/Throwable
+  #30 = Utf8               <E:Ljava/lang/Throwable;>(TF;)V^TE;
+  #31 = Utf8               f9
+  #32 = Utf8               Code
+  #33 = Utf8               LineNumberTable
+  #34 = Utf8               f10
+  #35 = Utf8               (Ljava/util/List;)V
+  #36 = Utf8               (Ljava/util/List<+Ljava/lang/Number;>;)V
+  #37 = Utf8               f11
+  #38 = Utf8               <F:Ljava/lang/Object;>Ljava/lang/Object;
+  #39 = Utf8               SourceFile
+  #40 = Utf8               TestClass04.java
+{
+  public abstract <E extends java.lang.Object> void f0();
+    descriptor: ()V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    Signature: #10                          // <E:Ljava/lang/Object;>()V
+
+  public abstract <E extends com.raptor.test04.C1> void f1();
+    descriptor: ()V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    Signature: #12                          // <E:Lcom/raptor/test04/C1;>()V
+
+  public abstract <E extends com.raptor.test04.I1> void f2();
+    descriptor: ()V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    Signature: #14                          // <E::Lcom/raptor/test04/I1;>()V
+
+  public abstract <E1 extends com.raptor.test04.C1, E2 extends com.raptor.test04.I2> void f3();
+    descriptor: ()V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    Signature: #16                          // <E1:Lcom/raptor/test04/C1;E2::Lcom/raptor/test04/I2;>()V
+
+  public abstract <E extends com.raptor.test04.C2 & com.raptor.test04.I2> void f4();
+    descriptor: ()V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    Signature: #18                          // <E:Lcom/raptor/test04/C2;:Lcom/raptor/test04/I2;>()V
+
+  public abstract <E extends com.raptor.test04.I1 & com.raptor.test04.I2> void f5();
+    descriptor: ()V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    Signature: #20                          // <E::Lcom/raptor/test04/I1;:Lcom/raptor/test04/I2;>()V
+
+  public abstract <E extends com.raptor.test04.C2 & com.raptor.test04.I1 & com.raptor.test04.I2> void f6();
+    descriptor: ()V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    Signature: #22                          // <E:Lcom/raptor/test04/C2;:Lcom/raptor/test04/I1;:Lcom/raptor/test04/I2;>()V
+
+  public abstract <E extends com.raptor.test04.I3<com.raptor.test04.C1>> void f7();
+    descriptor: ()V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    Signature: #24                          // <E::Lcom/raptor/test04/I3<Lcom/raptor/test04/C1;>;>()V
+
+  public abstract <E extends java.lang.Throwable> void f8(F) throws E;
+    descriptor: (Ljava/lang/Object;)V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    Exceptions:
+      throws java.lang.Throwable
+    Signature: #30                          // <E:Ljava/lang/Throwable;>(TF;)V^TE;
+
+  public static void f9();
+    descriptor: ()V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=0
+         0: iconst_3
+         1: iconst_2
+         2: multianewarray #1,  2             // class "[[[I"
+         6: astore_0
+         7: return
+      LineNumberTable:
+        line 24: 0
+        line 25: 7
+
+  public abstract void f10(java.util.List<? extends java.lang.Number>);
+    descriptor: (Ljava/util/List;)V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    Signature: #36                          // (Ljava/util/List<+Ljava/lang/Number;>;)V
+
+  public default void f11();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=0, locals=1, args_size=1
+         0: return
+      LineNumberTable:
+        line 29: 0
+}
+Signature: #38                          // <F:Ljava/lang/Object;>Ljava/lang/Object;
+SourceFile: "TestClass04.java"
