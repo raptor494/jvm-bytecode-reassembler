@@ -88,10 +88,12 @@ int greater(int x, int y);
     ireturn
 ```
 
-#### Some things to note:
-- All types are written **not** by their JVM internal names, but by how their fully-qualified names would appear in a Java source file. This includes type parameters and arguments.
-<br>
+#### Types
+All types are written **not** by their JVM internal names, but by how their fully-qualified names would appear in a Java source file. This includes type parameters and arguments.
+
 For example, the `javap` output of the return type of a method returning a `List<String>[]` would actually be in two separate places: the actual erased type and the signature. The erased type would be output as `[Ljava/util/List;` and the type signature would be output as `[Ljava/util/List<Ljava/lang/String;>;`. In *this* project, however, you can write it like `java.util.List<java.lang.String>[]`.
+
+#### Some things to note:
 - The JVM actually allows you to declare multiple fields with the same name but different types, and also multiple methods with different return types. It doesn't care because the `invoke` instructions always include the expected return type.
 - The JVM also does not require non-abstract class files to have a constructor.
 - If you *do* declare a constructor, you *must* call the super constructor. However, you do *not* need to call it immediately like in Java.
