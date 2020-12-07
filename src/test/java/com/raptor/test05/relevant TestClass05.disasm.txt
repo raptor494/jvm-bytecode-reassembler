@@ -22,7 +22,7 @@ class com.raptor.test05.TestClass05 {
       ... // Initialize list in local var 1
       aload         list
       getstatic     java.lang.System.out: java.io.PrintStream
-      invokedynamic { invokestatic java.lang.invoke.LambdaMetafactory.metafactory: (java.lang.invoke.MethodHandles$Lookup, java.lang.String, java.lang.invoke.MethodType, java.lang.invoke.MethodType, java.lang.invoke.MethodHandle, java.lang.invoke.MethodType) java.lang.invoke.CallSite ( (java.lang.Object) void, invokevirtual java.io.PrintStream.println: (java.lang.String) void, (java.lang.String) void ) ) }: accept: (java.io.PrintStream) java.util.function.Consumer
+      invokedynamic { invokestatic java.lang.invoke.LambdaMetafactory.metafactory: (java.lang.invoke.MethodHandles$Lookup, java.lang.String, java.lang.invoke.MethodType, java.lang.invoke.MethodType, java.lang.invoke.MethodHandle, java.lang.invoke.MethodType) java.lang.invoke.CallSite ( (java.lang.Object) void, invokevirtual java.io.PrintStream.println: (java.lang.String) void, (java.lang.String) void ) }: accept: (java.io.PrintStream) java.util.function.Consumer
       invokevirtual java.util.ArrayList.forEach: (java.util.function.Consumer) void
       return
 }

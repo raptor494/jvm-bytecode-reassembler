@@ -1081,7 +1081,7 @@ instruction[MethodVisitor mv]
     |   name='multianewarray' arrayType integerLiteral {$integerLiteral.value <= arrayDimCount($ctx.arrayType())}?
         {mv.visitMultiANewArrayInsn(getDescriptor($ctx.arrayType()), $integerLiteral.value);}
     |   name='new' classOrInterfaceType
-        {mv.visitTypeInsn(NEW, getDescriptor($ctx.classOrInterfaceType()));}
+        {mv.visitTypeInsn(NEW, dottedNameToSlashedName($ctx.classOrInterfaceType().qualifiedTypeIdentifier().str));}
     |   name='newarray' primitiveType
         {mv.visitIntInsn(NEWARRAY, switch($primitiveType.descriptor) {
             case 'Z' -> T_BOOLEAN;

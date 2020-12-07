@@ -1,14 +1,33 @@
 package com.raptor.asmrecomp;
 
-import static org.objectweb.asm.ClassWriter.*;
-import static org.objectweb.asm.Opcodes.*;
+import static org.objectweb.asm.ClassWriter.COMPUTE_FRAMES;
+import static org.objectweb.asm.ClassWriter.COMPUTE_MAXS;
+import static org.objectweb.asm.Opcodes.ACC_FINAL;
+import static org.objectweb.asm.Opcodes.ACC_PRIVATE;
+import static org.objectweb.asm.Opcodes.ACC_PUBLIC;
+import static org.objectweb.asm.Opcodes.ACC_STATIC;
+import static org.objectweb.asm.Opcodes.ACC_SYNTHETIC;
+import static org.objectweb.asm.Opcodes.ALOAD;
+import static org.objectweb.asm.Opcodes.ARETURN;
+import static org.objectweb.asm.Opcodes.GETFIELD;
+import static org.objectweb.asm.Opcodes.GETSTATIC;
+import static org.objectweb.asm.Opcodes.H_INVOKESTATIC;
+import static org.objectweb.asm.Opcodes.INVOKEINTERFACE;
+import static org.objectweb.asm.Opcodes.INVOKESPECIAL;
+import static org.objectweb.asm.Opcodes.INVOKEVIRTUAL;
+import static org.objectweb.asm.Opcodes.PUTFIELD;
+import static org.objectweb.asm.Opcodes.RETURN;
+import static org.objectweb.asm.Opcodes.V14;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.PrintWriter;
+import java.io.StringReader;
 import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
@@ -16,10 +35,23 @@ import java.util.function.Consumer;
 
 import javax.annotation.Nonnull;
 
-import org.anarres.cpp.*;
+import org.anarres.cpp.DefaultPreprocessorListener;
+import org.anarres.cpp.Feature;
+import org.anarres.cpp.FileLexerSource;
+import org.anarres.cpp.InputLexerSource;
+import org.anarres.cpp.LexerException;
+import org.anarres.cpp.Preprocessor;
+import org.anarres.cpp.Source;
+import org.anarres.cpp.StringLexerSource;
+import org.anarres.cpp.Token;
+import org.anarres.cpp.Warning;
 import org.antlr.v4.runtime.BailErrorStrategy;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.DiagnosticErrorListener;
+import org.antlr.v4.runtime.RecognitionException;
+import org.antlr.v4.runtime.Recognizer;
+import org.antlr.v4.runtime.misc.Pair;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Handle;
 import org.objectweb.asm.Type;
@@ -104,8 +136,7 @@ public class ASMRecompiler {
 				else pp.addWarning(Enum.valueOf(Warning.class, warning));
 			}
 
-			pp.addMacro("LAMBDA_METAFACTORY", "invokestatic java.lang.invoke.LambdaMetafactory.metafactory: (java.lang.invoke.MethodHandles$Lookup, java.lang.String, java.lang.invoke.MethodType, java.lang.invoke.MethodType, java.lang.invoke.MethodHandle, java.lang.invoke.MethodType) java.lang.invoke.CallSite");
-			pp.addMacro("ALT_LAMBDA_METAFACTORY", "invokestatic java.lang.invoke.LambdaMetafactory.altMetafactory: (java.lang.invoke.MethodHandles$Lookup, java.lang.String, java.lang.invoke.MethodType, java.lang.Object[]) java.lang.invoke.CallSite");
+			addDefaultMacros(pp);
 			for (String arg : options.valuesOf(defineOption)) {
 				int idx = arg.indexOf('=');
 				if (idx == -1)
@@ -174,6 +205,7 @@ public class ASMRecompiler {
 		}
 
 		var lexer = new ASMLexer(CharStreams.fromString(source, inputSource.getName()));
+		lexer.addErrorListener(new DiagnosticThrowingErrorListener());
 		var tokens = new CommonTokenStream(lexer);
 		var parser = new ASMParser(tokens);
 		parser.setErrorHandler(new BailErrorStrategy());
@@ -224,6 +256,109 @@ public class ASMRecompiler {
 //		Container$set_method.invoke(container, "Goodbye, world!");
 //		System.out.println(Container$get_method.invoke(container));
 
+	}
+
+	private static void addDefaultMacros(Preprocessor pp) throws LexerException {
+		pp.addMacro("LAMBDA_METAFACTORY", "invokestatic java.lang.invoke.LambdaMetafactory.metafactory: (java.lang.invoke.MethodHandles$Lookup, java.lang.String, java.lang.invoke.MethodType, java.lang.invoke.MethodType, java.lang.invoke.MethodHandle, java.lang.invoke.MethodType) java.lang.invoke.CallSite");
+		pp.addMacro("ALT_LAMBDA_METAFACTORY", "invokestatic java.lang.invoke.LambdaMetafactory.altMetafactory: (java.lang.invoke.MethodHandles$Lookup, java.lang.String, java.lang.invoke.MethodType, java.lang.Object[]) java.lang.invoke.CallSite");
+	}
+
+	private static class DiagnosticThrowingErrorListener extends DiagnosticErrorListener {
+
+		@Override
+		public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line, int charPositionInLine, String msg, RecognitionException e) {
+			throw e;
+		}
+
+	}
+
+	public static String preprocess(String source) throws IOException, LexerException {
+		var pp = new Preprocessor();
+		pp.addInput(new InputLexerSource(new StringReader(source)));
+		return preprocess(pp);
+	}
+
+	public static String preprocess(File sourceFile) throws IOException, LexerException {
+		var pp = new Preprocessor();
+		pp.addInput(sourceFile);
+		return preprocess(pp);
+	}
+
+	public static String preprocess(Source source) throws IOException, LexerException {
+		var pp = new Preprocessor(source);
+		pp.addInput(source);
+		return preprocess(pp);
+	}
+
+	private static String preprocess(Preprocessor pp) throws IOException, LexerException {
+		addDefaultMacros(pp);
+		pp.addFeature(Feature.DIGRAPHS);
+		pp.addFeature(Feature.TRIGRAPHS);
+		pp.addWarning(Warning.IMPORT);
+		var listener = new DefaultPreprocessorListener();
+		pp.setListener(listener);
+
+		var sb = new StringBuilder();
+
+		for (;;) {
+			Token tok = pp.token();
+			if (tok == null)
+				break;
+			if (tok.getType() == Token.EOF)
+				break;
+			if (listener.getErrors() > 0) {
+				throw new RuntimeException("Preprocessor failed: " + listener.getErrors() + " errors.");
+			}
+			sb.append(tok.getText());
+		}
+
+		return sb.toString();
+	}
+
+	public static Pair<String /* name */, byte[]> reassemble(String source, String sourceName, boolean debugEnabled) {
+		var lexer = new ASMLexer(CharStreams.fromString(source, sourceName));
+		return reassemble(lexer, debugEnabled);
+	}
+
+	public static Pair<String /* name */, byte[]> reassemble(String source, String sourceName) {
+		return reassemble(source, sourceName, false);
+	}
+
+	public static Pair<String /* name */, byte[]> reassemble(String source) {
+		return reassemble(source, null, false);
+	}
+
+	public static Pair<String /* name */, byte[]> reassemble(File source, boolean debugEnabled) throws IOException {
+		var lexer = new ASMLexer(CharStreams.fromPath(source.toPath()));
+		return reassemble(lexer, debugEnabled);
+	}
+
+	public static Pair<String /* name */, byte[]> reassemble(File source) throws IOException {
+		return reassemble(source, false);
+	}
+
+	public static Pair<String /* name */, byte[]> reassemble(InputStream source, boolean debugEnabled) throws IOException {
+		var lexer = new ASMLexer(CharStreams.fromStream(source));
+		return reassemble(lexer, debugEnabled);
+	}
+
+	public static Pair<String /* name */, byte[]> reassemble(InputStream source) throws IOException {
+		return reassemble(source, false);
+	}
+
+	private static Pair<String /* name */, byte[]> reassemble(ASMLexer lexer, boolean debugEnabled) {
+		lexer.addErrorListener(new DiagnosticThrowingErrorListener());
+		var tokens = new CommonTokenStream(lexer);
+		var parser = new ASMParser(tokens);
+		parser.setErrorHandler(new BailErrorStrategy());
+		parser.debugEnabled(debugEnabled);
+		
+		var unit = parser.compilationUnit();
+		return new Pair<>(unit.name, unit.cw.toByteArray());
+	}
+
+	public static Class<?> load(String name, byte[] bytes) {
+		return cl.defineClass(name, bytes);
 	}
 
 	@Nonnull
