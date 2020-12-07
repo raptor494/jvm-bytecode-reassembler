@@ -104,6 +104,8 @@ public class ASMRecompiler {
 				else pp.addWarning(Enum.valueOf(Warning.class, warning));
 			}
 
+			pp.addMacro("LAMBDA_METAFACTORY", "invokestatic java.lang.invoke.LambdaMetafactory.metafactory: (java.lang.invoke.MethodHandles$Lookup, java.lang.String, java.lang.invoke.MethodType, java.lang.invoke.MethodType, java.lang.invoke.MethodHandle, java.lang.invoke.MethodType) java.lang.invoke.CallSite");
+			pp.addMacro("ALT_LAMBDA_METAFACTORY", "invokestatic java.lang.invoke.LambdaMetafactory.altMetafactory: (java.lang.invoke.MethodHandles$Lookup, java.lang.String, java.lang.invoke.MethodType, java.lang.Object[]) java.lang.invoke.CallSite");
 			for (String arg : options.valuesOf(defineOption)) {
 				int idx = arg.indexOf('=');
 				if (idx == -1)
