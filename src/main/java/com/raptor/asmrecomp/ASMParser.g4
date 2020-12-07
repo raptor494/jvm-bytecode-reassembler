@@ -880,7 +880,11 @@ instruction[MethodVisitor mv]
         {
             var callSite = $ctx.callSiteRef();
             var bootstrap = callSite.bootstrapRef();
-            var bootstrapArgs = bootstrap.bootstrapArgs();
+            var bootstrapArgs = bootstrap.bootstrapArgs().loadableConstant();
+            var args = new Object[bootstrapArgs.size()];
+            for (int i = 0; i < args.length; i++) {
+                args[i] = bootstrapArgs.get(i).value;
+            }
             mv.visitInvokeDynamicInsn(
                 // name
                 callSite.identifier().str,
@@ -889,9 +893,7 @@ instruction[MethodVisitor mv]
                 // bootstrapMethodHandle
                 getHandle(bootstrap.handle()),
                 // bootstrapMethodArguments
-                getDescriptor(bootstrapArgs.methodType(0)),
-                getHandle(bootstrapArgs.handle()),
-                getSignature(bootstrapArgs.methodType(1))
+                args
             );
         }
     |   name='invokeinterface' methodRef
@@ -988,20 +990,8 @@ instruction[MethodVisitor mv]
                 else if (value == 1.0) mv.visitInsn(DCONST_1);
                 else mv.visitLdcInsn(value);
             }
-            else if (constValue instanceof String value) {
-                mv.visitLdcInsn(value);
-            }
-            else if (constValue instanceof TypeOrVoidContext typeOrVoid) {
-                mv.visitLdcInsn(Type.getType(getDescriptor(typeOrVoid)));
-            }
-            else if (constValue instanceof MethodTypeContext methodType) {
-                mv.visitLdcInsn(Type.getType(getDescriptor(methodType)));
-            }
-            else if (constValue instanceof HandleContext handle) {
-                mv.visitLdcInsn(getHandle(handle));
-            }
             else {
-                throw new AssertionError("Invalid constant value type: " + constValue.getClass());
+                mv.visitLdcInsn(constValue);
             }
         }
     |   name=('ldc' | 'ldc_w' | 'ldc2_w') 'true'
@@ -1161,7 +1151,7 @@ handle
     ;
     
 bootstrapArgs
-    :   '(' methodType ',' handle ',' methodType ')'
+    :   '(' (loadableConstant (',' loadableConstant)*)? ')'
     ;
     
 typeList
@@ -1176,9 +1166,9 @@ returns [Object value]
     |   doubleLiteral           {$value = $doubleLiteral.value;}
     |   stringLiteral           {$value = $stringLiteral.value;}
     |   characterLiteral        {$value = (int)$characterLiteral.value;}
-    |   typeOrVoid              {$value = $ctx.typeOrVoid();}
-    |   methodType              {$value = $ctx.methodType();}
-    |   handle                  {$value = $ctx.handle();}
+    |   typeOrVoid              {$value = Type.getType(getSignature($ctx.typeOrVoid()));}
+    |   methodType              {$value = Type.getType(getSignature($ctx.methodType()));}
+    |   handle                  {$value = getHandle($ctx.handle());}
     ;
     
 lookupSwitchArg
