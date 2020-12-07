@@ -93,6 +93,55 @@ All types are written **not** by their JVM internal names, but by how their full
 
 For example, the `javap` output of the return type of a method returning a `List<String>[]` would actually be in two separate places: the actual erased type and the signature. The erased type would be output as `[Ljava/util/List;` and the type signature would be output as `[Ljava/util/List<Ljava/lang/String;>;`. In *this* project, however, you can write it like `java.util.List<java.lang.String>[]`.
 
+This holds true for method types as well: for the following example, the method's internal type is `(I[FLjava/lang/String;)V` but you will reference it like `(int, float[], java.lang.String) void`.
+```java
+public void foo(int x, float[] floats, String str);
+```
+
+#### The `invokedynamic` Instruction
+`invokedynamic` is very special. Due to the way `javap` outputs `invokedynamic` instructions, I had to make up a syntax for it. To give you an idea of what I mean, this is what `javap` outputs for a call to `java.util.List.forEach(System.out::println)`:
+```java
+invokedynamic #34, 0 // InvokeDynamic #0:accept:(Ljava/io/PrintStream;)Ljava/util/function/Consumer;
+invokevirtual #38 // Method java/util/ArrayList.forEach:(Ljava/util/function/Consumer;)V
+```
+and then at the bottom of the class file:
+```java
+BootstrapMethods:
+  0: #50 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #57 (Ljava/lang/Object;)V
+      #59 REF_invokeVirtual java/io/PrintStream.println:(Ljava/lang/String;)V
+      #66 (Ljava/lang/String;)V
+```
+
+To do this in disassembly source file, I decided upon the syntax
+```
+invokedynamic { <HANDLE> <BOOTSTRAP ARGS> } : <METHOD NAME> : ( [LOCAL VAR TYPES] ) <IMPLEMENTED INTERFACE>
+```
+where:
+```
+HANDLE: <FIELD INSTRUCTION> <FIELD CONTAINER TYPE> . <FIELD NAME> : <FIELD TYPE>
+      | <METHOD INSTRUCTION> <METHOD CONTAINER TYPE> . <METHOD NAME> : <METHOD TYPE>
+
+BOOTSTRAP ARGS: ( <METHOD TYPE> , <HANDLE> , <METHOD TYPE> )
+
+METHOD TYPE: ( [PARAMETER TYPES] ) <RETURN TYPE>
+
+FIELD INSTRUCTION: (one of) getfield getstatic putfield putstatic
+
+METHOD INSTRUCTION: (one of) invokevirtual invokestatic invokespecial invokeinterface
+                  | new invokespecial
+```
+
+Example:
+```c
+#define LAMBDA_METAFACTORY invokestatic java.lang.invoke.LambdaMetafactory.metafactory: (java.lang.invoke.MethodHandles$Lookup, java.lang.String, java.lang.invoke.MethodType, java.lang.invoke.MethodType, java.lang.invoke.MethodHandle, java.lang.invoke.MethodType) java.lang.invoke.CallSite
+
+invokedynamic { LAMBDA_METAFACTORY ((java.lang.Object) void, invokevirtual java.io.PrintStream.println: (java.lang.String) void, (java.lang.String) void) }: accept: (java.io.PrintStream) java.util.function.Consumer
+```
+
+I will be working on an easier syntax for this.
+
 #### Some things to note:
 - The JVM actually allows you to declare multiple fields with the same name but different types, and also multiple methods with different return types. It doesn't care because the `invoke` instructions always include the expected return type.
 - The JVM also does not require non-abstract class files to have a constructor.
