@@ -128,7 +128,7 @@ import com.raptor.asmrecomp.ASMParserUtils.*;
             case KW_PUTSTATIC -> H_PUTSTATIC;
             case KW_INVOKEVIRTUAL -> H_INVOKEVIRTUAL;
             case KW_INVOKESTATIC -> H_INVOKESTATIC;
-            case KW_INVOKESPECIAL -> ctx.KW_NEW() == null? H_INVOKESPECIAL : H_NEWINVOKESPECIAL;
+            case KW_INVOKESPECIAL -> ctx.isNewInvokeSpecial? H_INVOKESPECIAL : H_NEWINVOKESPECIAL;
             case KW_INVOKEINTERFACE -> H_INVOKEINTERFACE;
             default -> throw new IllegalArgumentException();
         };
@@ -894,9 +894,54 @@ instruction[MethodVisitor mv]
                 // descriptor
                 getDescriptor(callSite.methodType()),
                 // bootstrapMethodHandle
-                getHandle(bootstrap.handle()),
+                bootstrap.handle() != null? getHandle(bootstrap.handle()) : new Handle(
+                    H_INVOKESTATIC,
+                    // owner
+                    "java/lang/invoke/LambdaMetafactory",
+                    // name
+                    "metafactory",
+                    // descriptor
+                    "(Ljava/lang/invoke/MethodHandles\u0024Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;"
+                ),
                 // bootstrapMethodArguments
                 args
+            );
+        }
+    |   name='invokedynamic' newCallSiteRef
+        {
+            var callSite = $ctx.newCallSiteRef();
+            var handle = getHandle(callSite.handle());
+            var sw = new SignatureWriter();
+            var visitor = new DescriptorVisitor(sw, this::lookupTypeParameter);
+            if (callSite.typeList() != null) {
+                for (var type : callSite.typeList().type()) {
+                    sw.visitParameterType();
+                    type.accept(visitor);
+                }
+            }
+            sw.visitReturnType();
+            sw.visitClassType(getOwner(callSite.methodRef()));
+            sw.visitEnd();
+
+            mv.visitInvokeDynamicInsn(
+                // name
+                callSite.methodRef().name,
+                // descriptor
+                sw.toString(),
+                // bootstrapMethodHandle
+                new Handle(
+                    H_INVOKESTATIC,
+                    // owner
+                    "java/lang/invoke/LambdaMetafactory",
+                    // name
+                    "metafactory",
+                    // descriptor
+                    "(Ljava/lang/invoke/MethodHandles\u0024Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;"
+                ),
+                // bootstrapArgs
+                Type.getType(getDescriptor(callSite.methodRef().methodType())),
+                handle,
+                Type.getType(getDescriptor(callSite.handle().methodRef().methodType()))
             );
         }
     |   name='invokeinterface' methodRef
@@ -1142,9 +1187,15 @@ returns [String name]
 callSiteRef
     :   bootstrapRef ':' identifier ':' methodType
     ;
+
+newCallSiteRef
+    :   '(' typeList? ')' APPLY_TO methodRef '{'
+            handle {switch ($ctx.handle().name.getType()) { case KW_GETFIELD, KW_GETSTATIC, KW_PUTFIELD, KW_PUTSTATIC -> false; default -> true;}}?<fail='Cannot use field handles with this form of call site syntax.'>
+        '}'
+    ;
     
 bootstrapRef
-    :   '{' handle bootstrapArgs '}'
+    :   '{' handle? bootstrapArgs '}'
     ;
     
 handle
@@ -1309,8 +1360,9 @@ wildcard
     ;
     
 wildcardBounds
+returns [boolean isSuperBound]
     :   'extends' referenceType
-    |   'super' referenceType
+    |   'super' referenceType {$isSuperBound = true;}
     ;
     
 typeIdentifier

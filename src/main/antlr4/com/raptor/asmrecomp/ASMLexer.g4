@@ -81,10 +81,9 @@ import com.raptor.antlr.denterhelper.InvalidDedentException;
 //    }
 }
 
-//
-// Keywords
-//
+//#region Keywords
 
+//#region Java Reserved Words
 KW_ABSTRACT : 'abstract';
 KW_ASSERT : 'assert';
 KW_BOOLEAN : 'boolean';
@@ -140,9 +139,10 @@ KW_VOLATILE : 'volatile';
 KW_WHILE : 'while';
 KW_UNDER_SCORE : '_';//Introduced in Java 9
 
-//
-// Language-specific keywords
-//
+//#endregion
+
+//#region Language-specific keywords
+
 KW_SYNTHETIC : 'synthetic';
 KW_MANDATED : 'mandated';
 KW_BRIDGE : 'bridge';
@@ -150,9 +150,10 @@ KW_DEPRECATED : 'deprecated';
 KW_CODE : 'Code';
 INIT : '<init>';
 
-//
-// Bytecode Instruction Keywords
-//
+//#endregion
+
+//#region Bytecode Instruction Keywords
+
 KW_AASTORE : 'aastore';
 KW_ACONST_NULL : 'aconst_null';
 KW_ALOAD : 'aload';
@@ -354,11 +355,14 @@ KW_SIPUSH : 'sipush';
 KW_SWAP : 'swap';
 KW_TABLESWITCH : 'tableswitch';
 KW_WIDE : 'wide';
-    
-//
-// Separators
-//
 
+//#endregion
+//#endregion
+    
+//#region Separators/Operators
+
+APPLY_TO : ':=>';
+PLUS   : '+';
 LPAREN : '(';
 RPAREN : ')';
 LBRACE : '{';
@@ -379,9 +383,9 @@ QUES   : '?';
 STAR   : '*';
 EQ     : '=';
 
-//
-// Identifiers (must appear after all keywords in the grammar)
-//
+//#endregion
+
+//#region Identifiers (must appear after all keywords in the grammar)
 
 Identifier
     :   JavaLetter JavaLetterOrDigit*
@@ -409,9 +413,9 @@ JavaLetterOrDigit
         {Character.isJavaIdentifierPart(Character.toCodePoint((char)_input.LA(-2), (char)_input.LA(-1)))}?
     ;
 
-//
-// Whitespace and comments
-//
+//#endregion
+
+//#region Whitespace and comments
 
 NL  :   ('\r' '\n'? | '\n') [ \t]* -> channel(HIDDEN)
     ;
@@ -426,10 +430,10 @@ COMMENT
 LINE_COMMENT
     :   '//' ~[\r\n]* -> channel(HIDDEN)
     ;
+
+//#endregion
  
-//
-// Integer Literals
-//
+//#region Integer Literals
 
 NegativeIntegerLiteral
     :   '-' IntegerLiteral
@@ -452,6 +456,8 @@ IntegerLiteral
             }
         }
     ;
+
+//#region Integer Literal Fragments
 
 fragment
 DecimalIntegerLiteral
@@ -594,9 +600,10 @@ BinaryDigitOrUnderscore
     |   '_'
     ;
 
-//
-// Floating-Point Literals
-//
+//#endregion
+//#endregion
+
+//#region Floating-Point Literals
 
 FloatingPointLiteral
     :   '-'? (   DecimalFloatingPointLiteral
@@ -609,6 +616,8 @@ FloatingPointLiteral
             }
         }
     ;
+
+//#region Floating-Point Literal Fragments
 
 fragment
 DecimalFloatingPointLiteral
@@ -664,9 +673,10 @@ BinaryExponentIndicator
     :   [pP]
     ;
 
-//
-// Character Literals
-//
+//#endregion
+//#endregion
+
+//#region Character Literals
 
 CharacterLiteral
     :   '\'' SingleCharacter '\''
@@ -678,9 +688,9 @@ SingleCharacter
     :   ~['\\\r\n]
     ;
 
-//
-// String Literals
-//
+//#endregion
+
+//#region String Literals
 
 StringLiteral
     :   '"' StringCharacters? '"'
@@ -697,9 +707,9 @@ StringCharacter
     |   EscapeSequence
     ;
 
-//
-// Escape Sequences for Character and String Literals
-//
+//#endregion
+
+//#region Escape Sequences for Character and String Literals
 
 fragment
 EscapeSequence
@@ -725,3 +735,5 @@ fragment
 UnicodeEscape
     :   '\\' 'u'+ HexDigit HexDigit HexDigit HexDigit
     ;
+
+//#endregion

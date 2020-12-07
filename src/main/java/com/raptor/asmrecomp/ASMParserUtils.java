@@ -169,10 +169,10 @@ public class ASMParserUtils {
 		
 		@Override
 		public SignatureWriter visitWildcardBounds(WildcardBoundsContext ctx) {
-			if (ctx.KW_EXTENDS() != null) {
-				sw.visitTypeArgument('+');
-			} else {
+			if (ctx.isSuperBound) {
 				sw.visitTypeArgument('-');
+			} else {
+				sw.visitTypeArgument('+');
 			}
 			return super.visitWildcardBounds(ctx);
 		}
@@ -185,12 +185,8 @@ public class ASMParserUtils {
 		
 		@Override
 		public SignatureWriter visitPrimitiveType(PrimitiveTypeContext ctx) {
-			if (ctx.KW_BOOLEAN() != null) {
-				sw.visitBaseType('Z');
-				return sw;
-			} else {
-				return super.visitPrimitiveType(ctx);
-			}
+			sw.visitBaseType(ctx.descriptor);
+			return sw;
 		}
 		
 		@Override

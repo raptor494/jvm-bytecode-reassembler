@@ -1,5 +1,7 @@
 public class Test02 {
 
+    public static java.lang.String str;
+
     public static void run();
       Code:
         new java.util.ArrayList
@@ -18,7 +20,10 @@ public class Test02 {
         invokevirtual java.util.ArrayList.add: (java.lang.Object) boolean
         pop
         getstatic java.lang.System.out: java.io.PrintStream
-        invokedynamic { LAMBDA_METAFACTORY ( (java.lang.Object) void, invokevirtual java.io.PrintStream.println: (java.lang.String) void, (java.lang.String) void ) }: accept: (java.io.PrintStream) java.util.function.Consumer
+        invokedynamic { ( (java.lang.Object) void, invokevirtual java.io.PrintStream.println: (java.lang.String) void, (java.lang.String) void ) }: accept: (java.io.PrintStream) java.util.function.Consumer
+        /*invokedynamic (java.io.PrintStream) :=> java.util.function.Consumer.accept: (java.lang.Object) void {
+            invokevirtual java.io.PrintStream.println: (java.lang.String) void
+        }*/
         invokevirtual java.util.ArrayList.forEach: (java.util.function.Consumer) void
         return
 

@@ -6,6 +6,11 @@
   <name>Java ASM Recompiler</name>
   <version>0.0.1-SNAPSHOT</version>
   <build>
+    <resources>
+      <resource>
+        <directory>${project.build.directory}/generated-sources/antlr4</directory>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -60,11 +65,15 @@
         <version>4.7.1</version>
         <executions>
           <execution>
+            <id>antlr</id>
             <goals>
               <goal>antlr4</goal>
             </goals>
           </execution>
         </executions>
+        <configuration>
+          <visitor>true</visitor>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
@@ -79,7 +88,7 @@
             </goals>
             <configuration>
               <sources>
-                <source>src/main/antlr</source>
+                <source>target/generated-sources/antlr4</source>
               </sources>
             </configuration>
           </execution>
@@ -138,6 +147,7 @@
     </dependency>
   </dependencies>
   <properties>
+    <antlr4.visitor>true</antlr4.visitor>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
