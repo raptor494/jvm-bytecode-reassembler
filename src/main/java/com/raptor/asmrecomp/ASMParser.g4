@@ -957,53 +957,59 @@ instruction[MethodVisitor mv]
         {mv.visitInsn(LCONST_0);}
     |   name='lconst_1'
         {mv.visitInsn(LCONST_1);}
-    |   name=('ldc' | 'ldc_w' | 'ldc2_w') {int value = -1;} (signedIntegerLiteral {value = $signedIntegerLiteral.value;} | characterLiteral {value = $characterLiteral.value;})
+    |   name=('ldc' | 'ldc_w' | 'ldc2_w') loadableConstant
         {
-            switch (value) {
-                case -1 -> mv.visitInsn(ICONST_M1);
-                case 0 -> mv.visitInsn(ICONST_0);
-                case 1 -> mv.visitInsn(ICONST_1);
-                case 2 -> mv.visitInsn(ICONST_2);
-                case 3 -> mv.visitInsn(ICONST_3);
-                case 4 -> mv.visitInsn(ICONST_4);
-                case 5 -> mv.visitInsn(ICONST_5);
-                default -> mv.visitLdcInsn(value);
+            var constValue = $loadableConstant.value;
+            if (constValue instanceof Integer value) {
+                switch (value) {
+                    case -1 -> mv.visitInsn(ICONST_M1);
+                    case 0 -> mv.visitInsn(ICONST_0);
+                    case 1 -> mv.visitInsn(ICONST_1);
+                    case 2 -> mv.visitInsn(ICONST_2);
+                    case 3 -> mv.visitInsn(ICONST_3);
+                    case 4 -> mv.visitInsn(ICONST_4);
+                    case 5 -> mv.visitInsn(ICONST_5);
+                    default -> mv.visitLdcInsn(value);
+                }
+            }
+            else if (constValue instanceof Long value) {
+                if (value == 0) mv.visitInsn(LCONST_0);
+                else if (value == 1) mv.visitInsn(LCONST_1);
+                else mv.visitLdcInsn(value);
+            }
+            else if (constValue instanceof Float value) {
+                if (value == 0.0f) mv.visitInsn(FCONST_0);
+                else if (value == 1.0f) mv.visitInsn(FCONST_1);
+                else if (value == 2.0f) mv.visitInsn(FCONST_2);
+                else mv.visitLdcInsn(value);
+            }
+            else if (constValue instanceof Double value) {
+                if (value == 0.0) mv.visitInsn(DCONST_0);
+                else if (value == 1.0) mv.visitInsn(DCONST_1);
+                else mv.visitLdcInsn(value);
+            }
+            else if (constValue instanceof String value) {
+                mv.visitLdcInsn(value);
+            }
+            else if (constValue instanceof TypeOrVoidContext typeOrVoid) {
+                mv.visitLdcInsn(Type.getType(getDescriptor(typeOrVoid)));
+            }
+            else if (constValue instanceof MethodTypeContext methodType) {
+                mv.visitLdcInsn(Type.getType(getDescriptor(methodType)));
+            }
+            else if (constValue instanceof HandleContext handle) {
+                mv.visitLdcInsn(getHandle(handle));
+            }
+            else {
+                throw new AssertionError("Invalid constant value type: " + constValue.getClass());
             }
         }
-    |   name=('ldc' | 'ldc_w' | 'ldc2_w') signedLongLiteral
-        {
-            long value = $signedLongLiteral.value;
-            if (value == 0) mv.visitInsn(LCONST_0);
-            else if (value == 1) mv.visitInsn(LCONST_1);
-            else mv.visitLdcInsn(value);
-        }
-    |   name=('ldc' | 'ldc_w' | 'ldc2_w') floatLiteral
-        {
-            float value = $floatLiteral.value;
-            if (value == 0.0f) mv.visitInsn(FCONST_0);
-            else if (value == 1.0f) mv.visitInsn(FCONST_1);
-            else if (value == 2.0f) mv.visitInsn(FCONST_2);
-            else mv.visitLdcInsn(value);
-        }
-    |   name=('ldc' | 'ldc_w' | 'ldc2_w') doubleLiteral
-        {
-            double value = $doubleLiteral.value;
-            if (value == 0.0) mv.visitInsn(DCONST_0);
-            else if (value == 1.0) mv.visitInsn(DCONST_1);
-            else mv.visitLdcInsn(value);
-        }
-    |   name=('ldc' | 'ldc_w' | 'ldc2_w') stringLiteral
-        {mv.visitLdcInsn($stringLiteral.value);}
-    |   name=('ldc' | 'ldc_w' | 'ldc2_w') typeOrVoid
-        {mv.visitLdcInsn(Type.getType(getDescriptor($ctx.typeOrVoid())));}
-    |   name=('ldc' | 'ldc_w' | 'ldc2_w') methodType
-        {mv.visitLdcInsn(Type.getType(getDescriptor($ctx.methodType())));}
-    |   name=('ldc' | 'ldc_w' | 'ldc2_w') handle
-        {mv.visitLdcInsn(getHandle($ctx.handle()));}
     |   name=('ldc' | 'ldc_w' | 'ldc2_w') 'true'
         {mv.visitInsn(ICONST_1);}
     |   name=('ldc' | 'ldc_w' | 'ldc2_w') 'false'
         {mv.visitInsn(ICONST_0);}
+    |   name=('ldc' | 'ldc_w' | 'ldc2_w') 'null'
+        {mv.visitInsn(ACONST_NULL);}
     |   name='ldiv'
         {mv.visitInsn(LDIV);}
     |   'wide'? name='lload' {int value = -1;}
@@ -1155,21 +1161,24 @@ handle
     ;
     
 bootstrapArgs
-    : '(' methodType ',' handle ',' methodType ')'
+    :   '(' methodType ',' handle ',' methodType ')'
     ;
     
 typeList
-    : type (',' type)*
+    :   type (',' type)*
     ;
     
 loadableConstant
-    :   integerLiteral
-    |   FloatingPointLiteral 
-    |   StringLiteral 
-    |   CharacterLiteral 
-    |   type 
-    |   methodType 
-    |   handle
+returns [Object value]
+    :   signedIntegerLiteral    {$value = $signedIntegerLiteral.value;}
+    |   signedLongLiteral       {$value = $signedLongLiteral.value;}
+    |   floatLiteral            {$value = $floatLiteral.value;}
+    |   doubleLiteral           {$value = $doubleLiteral.value;}
+    |   stringLiteral           {$value = $stringLiteral.value;}
+    |   characterLiteral        {$value = (int)$characterLiteral.value;}
+    |   typeOrVoid              {$value = $ctx.typeOrVoid();}
+    |   methodType              {$value = $ctx.methodType();}
+    |   handle                  {$value = $ctx.handle();}
     ;
     
 lookupSwitchArg

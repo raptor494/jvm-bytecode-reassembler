@@ -1,4 +1,4 @@
-// Generated from ASMLexer.g4 by ANTLR 4.8
+// Generated from c:\Users\flyin\Documents\Java\asm-recompiler\src\main\java\com\raptor\asmrecomp\ASMLexer.g4 by ANTLR 4.8
 
 package com.raptor.asmrecomp;
 
