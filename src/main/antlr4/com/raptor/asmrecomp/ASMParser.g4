@@ -5,8 +5,6 @@ options {
 }
 
 @header {
-package com.raptor.asmrecomp;
-
 import static org.objectweb.asm.ClassWriter.*;
 import static org.objectweb.asm.Opcodes.*;
 
@@ -108,7 +106,8 @@ import com.raptor.asmrecomp.ASMParserUtils.*;
     }
     
     protected String getSignature(RuleContext ctx) {
-        return ctx.accept(new SignatureVisitor(this::hasTypeParameter)).toString();
+        var signature = ctx.accept(new SignatureVisitor(this::hasTypeParameter)).toString();
+        return signature.isEmpty()? null : signature;
     }
 
     protected String getOwner(FieldRefContext ctx) {
@@ -193,7 +192,7 @@ locals [int flags]
                 // name
                 dottedNameToSlashedName($qualifiedTypeIdentifier.str),
                 // signature
-                $ctx.accept(new SignatureVisitor(this::hasTypeParameter)).toString(),
+                getSignature($ctx),
                 // superName
                 ($ctx.superclass() == null)? Type.getInternalName(Object.class) : getInternalName($ctx.superclass().classOrInterfaceType()),
                 // interfaces
@@ -243,7 +242,7 @@ locals [int flags]
                 // name
                 dottedNameToSlashedName($qualifiedTypeIdentifier.str),
                 // signature
-                $ctx.accept(new SignatureVisitor(this::hasTypeParameter)).toString(),
+                getSignature($ctx),
                 // superName
                 null,
                 // interfaces
@@ -325,15 +324,19 @@ locals [int flags]
             if (formalParameterList != null && formalParameterList.lastFormalParameter().variadicParameter() != null) {
                 $flags |= ACC_VARARGS;
             }
+            var signature = getSignature($ctx);
+            var descriptor = getDescriptor($ctx);
+            if (debug) System.out.println("Signature = " + signature + "\nDescriptor = " + descriptor);
+
             var mv = cw.visitMethod(
                 // access
                 $flags,
                 // name
                 "<init>",
                 // descriptor
-                $ctx.accept(new DescriptorVisitor(this::lookupTypeParameter)).toString(),
+                descriptor,
                 // signature
-                $ctx.accept(new SignatureVisitor(this::hasTypeParameter)).toString(),
+                signature,
                 // exceptions
                 getDescriptorsArray($ctx.exceptions())
             );
@@ -392,7 +395,7 @@ locals [int flags]
                 // descriptor
                 $ctx.accept(new DescriptorVisitor(this::lookupTypeParameter)).toString(),
                 // signature
-                $ctx.accept(new SignatureVisitor(this::hasTypeParameter)).toString(),
+                getSignature($ctx),
                 // exceptions
                 getDescriptorsArray($ctx.exceptions())
             );
@@ -1145,9 +1148,10 @@ bootstrapRef
     ;
     
 handle
+returns [boolean isNewInvokeSpecial]
     :   name=('getfield' | 'getstatic' | 'putfield' | 'putstatic') fieldRef
     |   name=('invokevirtual' | 'invokestatic' | 'invokespecial' | 'invokeinterface') methodRef
-    |   'new' name='invokespecial' methodRef
+    |   'new' name='invokespecial' {$isNewInvokeSpecial = true;} methodRef
     ;
     
 bootstrapArgs

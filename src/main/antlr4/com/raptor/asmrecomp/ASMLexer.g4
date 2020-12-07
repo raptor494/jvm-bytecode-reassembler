@@ -5,8 +5,6 @@ lexer grammar ASMLexer;
 tokens { LongLiteral, DoubleLiteral, NegativeLongLiteral, INDENT, DEDENT }
 
 @header {
-package com.raptor.asmrecomp;
-
 import com.raptor.antlr.denterhelper.DenterHelper;
 import com.raptor.antlr.denterhelper.DefaultDenterHelper;
 import com.raptor.antlr.denterhelper.InvalidDedentException;

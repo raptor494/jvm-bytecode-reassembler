@@ -177,7 +177,10 @@ public class ASMRecompiler {
 		var tokens = new CommonTokenStream(lexer);
 		var parser = new ASMParser(tokens);
 		parser.setErrorHandler(new BailErrorStrategy());
-		if (options.has(debugOption)) parser.debugEnabled(true);
+		if (options.has(debugOption)) {
+			parser.debugEnabled(true);
+			System.out.println("Debug enabled.");
+		}
 
 		var unit = parser.compilationUnit();
 		var bytes = unit.cw.toByteArray();

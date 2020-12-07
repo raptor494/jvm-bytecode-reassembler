@@ -401,6 +401,18 @@ public class ASMParserUtils {
 			return sw;
 		}
 		
+		@Override
+		public SignatureWriter visitConstructorDeclaration(ConstructorDeclarationContext ctx) {
+			super.visitConstructorDeclaration(ctx);
+			return sw;
+		}
+
+		@Override
+		public SignatureWriter visitMethodDeclaration(MethodDeclarationContext ctx) {
+			
+			return super.visitMethodDeclaration(ctx);
+		}
+
 	}
 	
 	/*public static class InternalNameVisitor extends ASMParserBaseVisitor<String> {

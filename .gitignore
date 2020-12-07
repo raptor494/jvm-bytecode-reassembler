@@ -2,3 +2,4 @@
 .vscode/
 target/
 src/main/java/com/raptor/asmrecomp/.antlr/
+src/main/antlr4/com/raptor/asmrecomp/.antlr/
