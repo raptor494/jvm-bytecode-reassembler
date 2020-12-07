@@ -1,0 +1,147 @@
+Classfile /C:/Users/flyin/Documents/Java/asm-recompiler/src/test/java/com/raptor/test05/TestClass05.class
+  Last modified Dec 6, 2020; size 1250 bytes
+  SHA-256 checksum 69c50c7d47823ac63375de33475cf4ed643886a67390d31ee5dc331292a8b490
+  Compiled from "TestClass05.java"
+class com.raptor.test05.TestClass05
+  minor version: 65535
+  major version: 58
+  flags: (0x0020) ACC_SUPER
+  this_class: #42                         // com/raptor/test05/TestClass05
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 2, attributes: 3
+Constant pool:
+   #1 = Methodref          #2.#3          // java/lang/Object."<init>":()V
+   #2 = Class              #4             // java/lang/Object
+   #3 = NameAndType        #5:#6          // "<init>":()V
+   #4 = Utf8               java/lang/Object
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = Class              #8             // java/util/ArrayList
+   #8 = Utf8               java/util/ArrayList
+   #9 = Methodref          #7.#3          // java/util/ArrayList."<init>":()V
+  #10 = String             #11            // 1
+  #11 = Utf8               1
+  #12 = Methodref          #7.#13         // java/util/ArrayList.add:(Ljava/lang/Object;)Z
+  #13 = NameAndType        #14:#15        // add:(Ljava/lang/Object;)Z
+  #14 = Utf8               add
+  #15 = Utf8               (Ljava/lang/Object;)Z
+  #16 = String             #17            // 2
+  #17 = Utf8               2
+  #18 = String             #19            // 3
+  #19 = Utf8               3
+  #20 = String             #21            // 4
+  #21 = Utf8               4
+  #22 = Fieldref           #23.#24        // java/lang/System.out:Ljava/io/PrintStream;
+  #23 = Class              #25            // java/lang/System
+  #24 = NameAndType        #26:#27        // out:Ljava/io/PrintStream;
+  #25 = Utf8               java/lang/System
+  #26 = Utf8               out
+  #27 = Utf8               Ljava/io/PrintStream;
+  #28 = Methodref          #29.#30        // java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+  #29 = Class              #31            // java/util/Objects
+  #30 = NameAndType        #32:#33        // requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+  #31 = Utf8               java/util/Objects
+  #32 = Utf8               requireNonNull
+  #33 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+  #34 = InvokeDynamic      #0:#35         // #0:accept:(Ljava/io/PrintStream;)Ljava/util/function/Consumer;
+  #35 = NameAndType        #36:#37        // accept:(Ljava/io/PrintStream;)Ljava/util/function/Consumer;
+  #36 = Utf8               accept
+  #37 = Utf8               (Ljava/io/PrintStream;)Ljava/util/function/Consumer;
+  #38 = Methodref          #7.#39         // java/util/ArrayList.forEach:(Ljava/util/function/Consumer;)V
+  #39 = NameAndType        #40:#41        // forEach:(Ljava/util/function/Consumer;)V
+  #40 = Utf8               forEach
+  #41 = Utf8               (Ljava/util/function/Consumer;)V
+  #42 = Class              #43            // com/raptor/test05/TestClass05
+  #43 = Utf8               com/raptor/test05/TestClass05
+  #44 = Utf8               Code
+  #45 = Utf8               LineNumberTable
+  #46 = Utf8               foo
+  #47 = Utf8               SourceFile
+  #48 = Utf8               TestClass05.java
+  #49 = Utf8               BootstrapMethods
+  #50 = MethodHandle       6:#51          // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #51 = Methodref          #52.#53        // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #52 = Class              #54            // java/lang/invoke/LambdaMetafactory
+  #53 = NameAndType        #55:#56        // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #54 = Utf8               java/lang/invoke/LambdaMetafactory
+  #55 = Utf8               metafactory
+  #56 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #57 = MethodType         #58            //  (Ljava/lang/Object;)V
+  #58 = Utf8               (Ljava/lang/Object;)V
+  #59 = MethodHandle       5:#60          // REF_invokeVirtual java/io/PrintStream.println:(Ljava/lang/String;)V
+  #60 = Methodref          #61.#62        // java/io/PrintStream.println:(Ljava/lang/String;)V
+  #61 = Class              #63            // java/io/PrintStream
+  #62 = NameAndType        #64:#65        // println:(Ljava/lang/String;)V
+  #63 = Utf8               java/io/PrintStream
+  #64 = Utf8               println
+  #65 = Utf8               (Ljava/lang/String;)V
+  #66 = MethodType         #65            //  (Ljava/lang/String;)V
+  #67 = Utf8               InnerClasses
+  #68 = Class              #69            // java/lang/invoke/MethodHandles$Lookup
+  #69 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #70 = Class              #71            // java/lang/invoke/MethodHandles
+  #71 = Utf8               java/lang/invoke/MethodHandles
+  #72 = Utf8               Lookup
+{
+  com.raptor.test05.TestClass05();
+    descriptor: ()V
+    flags: (0x0000)
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 5: 0
+
+  void foo();
+    descriptor: ()V
+    flags: (0x0000)
+    Code:
+      stack=3, locals=2, args_size=1
+         0: new           #7                  // class java/util/ArrayList
+         3: dup
+         4: invokespecial #9                  // Method java/util/ArrayList."<init>":()V
+         7: astore_1
+         8: aload_1
+         9: ldc           #10                 // String 1
+        11: invokevirtual #12                 // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+        14: pop
+        15: aload_1
+        16: ldc           #16                 // String 2
+        18: invokevirtual #12                 // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+        21: pop
+        22: aload_1
+        23: ldc           #18                 // String 3
+        25: invokevirtual #12                 // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+        28: pop
+        29: aload_1
+        30: ldc           #20                 // String 4
+        32: invokevirtual #12                 // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+        35: pop
+        36: aload_1
+        37: getstatic     #22                 // Field java/lang/System.out:Ljava/io/PrintStream;
+        40: dup
+        41: invokestatic  #28                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+        44: pop
+        45: invokedynamic #34,  0             // InvokeDynamic #0:accept:(Ljava/io/PrintStream;)Ljava/util/function/Consumer;
+        50: invokevirtual #38                 // Method java/util/ArrayList.forEach:(Ljava/util/function/Consumer;)V
+        53: return
+      LineNumberTable:
+        line 8: 0
+        line 9: 8
+        line 10: 15
+        line 11: 22
+        line 12: 29
+        line 13: 36
+        line 14: 53
+}
+SourceFile: "TestClass05.java"
+BootstrapMethods:
+  0: #50 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #57 (Ljava/lang/Object;)V
+      #59 REF_invokeVirtual java/io/PrintStream.println:(Ljava/lang/String;)V
+      #66 (Ljava/lang/String;)V
+InnerClasses:
+  public static final #72= #68 of #70;    // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
