@@ -8,8 +8,10 @@ public class test.Test02 extends test.Test01 {
         iconst_5
         putfield      x: int  
         getstatic     java.lang.System.out: java.io.PrintStream
-        ldc           "Test02 init"
-        invokevirtual java.io.PrintStream.println: (java.lang.String) void
+        ldc           " "
+        pop
+        ldc           "Test02 init\n"
+        invokevirtual java.io.PrintStream.print: (java.lang.String) void
         aload this
         invokespecial test.Test01.<init>: () void
         return

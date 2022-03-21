@@ -1,0 +1,248 @@
+Classfile /C:/Users/flyin/Documents/Java/asm-recompiler/src/test/java/com/raptor/test06/TestClass06.class
+  Last modified Mar 21, 2022; size 2007 bytes
+  SHA-256 checksum 50283dd56342fa928eed2cd50c4fb1a354ca288b47097cf1a88d941bb21606b1
+  Compiled from "TestClass06.java"
+public class com.raptor.test06.TestClass06
+  minor version: 0
+  major version: 61
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #16                         // com/raptor/test06/TestClass06
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 6, methods: 6, attributes: 3
+Constant pool:
+   #1 = Methodref          #2.#3          // java/lang/Object."<init>":()V
+   #2 = Class              #4             // java/lang/Object
+   #3 = NameAndType        #5:#6          // "<init>":()V
+   #4 = Utf8               java/lang/Object
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = String             #8             // test string\n\u0000\"
+   #8 = Utf8               test string\n\u0000\"
+   #9 = Class              #10            // java/lang/String
+  #10 = Utf8               java/lang/String
+  #11 = InvokeDynamic      #0:#12         // #0:test:()Ljava/util/function/Predicate;
+  #12 = NameAndType        #13:#14        // test:()Ljava/util/function/Predicate;
+  #13 = Utf8               test
+  #14 = Utf8               ()Ljava/util/function/Predicate;
+  #15 = InvokeDynamic      #1:#12         // #1:test:()Ljava/util/function/Predicate;
+  #16 = Class              #17            // com/raptor/test06/TestClass06
+  #17 = Utf8               com/raptor/test06/TestClass06
+  #18 = Utf8               field1
+  #19 = Utf8               I
+  #20 = Utf8               field2
+  #21 = Utf8               RuntimeInvisibleAnnotations
+  #22 = Utf8               Lcom/raptor/test06/ClassOnlyAnnotation;
+  #23 = Utf8               value
+  #24 = Utf8               field2 value
+  #25 = Utf8               field3
+  #26 = Utf8               RuntimeVisibleAnnotations
+  #27 = Utf8               Lcom/raptor/test06/RuntimeAnnotation;
+  #28 = Utf8               field3 value
+  #29 = Utf8               field4
+  #30 = Utf8               field4 value
+  #31 = Utf8               optionalValue
+  #32 = Integer            1
+  #33 = Utf8               field5
+  #34 = Utf8               field5 value
+  #35 = Utf8               optionalClass
+  #36 = Utf8               Ljava/lang/String;
+  #37 = Utf8               field6
+  #38 = Utf8               field6 value
+  #39 = Integer            66
+  #40 = Utf8               Ljava/lang/Object;
+  #41 = Utf8               annotation
+  #42 = Utf8               flag
+  #43 = Utf8               c
+  #44 = Integer            65
+  #45 = Utf8               Code
+  #46 = Utf8               LineNumberTable
+  #47 = Utf8               stringConstant
+  #48 = Utf8               ()Ljava/lang/String;
+  #49 = Utf8               classConstant
+  #50 = Utf8               ()Ljava/lang/Class;
+  #51 = Utf8               Signature
+  #52 = Utf8               ()Ljava/lang/Class<Ljava/lang/String;>;
+  #53 = Utf8               lambda
+  #54 = Utf8               ()Ljava/util/function/Predicate<Ljava/lang/Object;>;
+  #55 = Utf8               methodReference
+  #56 = Utf8               ()Ljava/util/function/Predicate<Ljava/lang/String;>;
+  #57 = Utf8               lambda$lambda$0
+  #58 = Utf8               (Ljava/lang/Object;)Z
+  #59 = Utf8               StackMapTable
+  #60 = Utf8               SourceFile
+  #61 = Utf8               TestClass06.java
+  #62 = Utf8               BootstrapMethods
+  #63 = MethodHandle       6:#64          // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #64 = Methodref          #65.#66        // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #65 = Class              #67            // java/lang/invoke/LambdaMetafactory
+  #66 = NameAndType        #68:#69        // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #67 = Utf8               java/lang/invoke/LambdaMetafactory
+  #68 = Utf8               metafactory
+  #69 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #70 = MethodType         #58            //  (Ljava/lang/Object;)Z
+  #71 = MethodHandle       6:#72          // REF_invokeStatic com/raptor/test06/TestClass06.lambda$lambda$0:(Ljava/lang/Object;)Z
+  #72 = Methodref          #16.#73        // com/raptor/test06/TestClass06.lambda$lambda$0:(Ljava/lang/Object;)Z
+  #73 = NameAndType        #57:#58        // lambda$lambda$0:(Ljava/lang/Object;)Z
+  #74 = MethodHandle       5:#75          // REF_invokeVirtual java/lang/String.isEmpty:()Z
+  #75 = Methodref          #9.#76         // java/lang/String.isEmpty:()Z
+  #76 = NameAndType        #77:#78        // isEmpty:()Z
+  #77 = Utf8               isEmpty
+  #78 = Utf8               ()Z
+  #79 = MethodType         #80            //  (Ljava/lang/String;)Z
+  #80 = Utf8               (Ljava/lang/String;)Z
+  #81 = Utf8               InnerClasses
+  #82 = Class              #83            // java/lang/invoke/MethodHandles$Lookup
+  #83 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #84 = Class              #85            // java/lang/invoke/MethodHandles
+  #85 = Utf8               java/lang/invoke/MethodHandles
+  #86 = Utf8               Lookup
+{
+  int field1;
+    descriptor: I
+    flags: (0x0000)
+
+  int field2;
+    descriptor: I
+    flags: (0x0000)
+    RuntimeInvisibleAnnotations:
+      0: #22(#23=s#24)
+        com.raptor.test06.ClassOnlyAnnotation(
+          value="field2 value"
+        )
+
+  int field3;
+    descriptor: I
+    flags: (0x0000)
+    RuntimeVisibleAnnotations:
+      0: #27(#23=[s#28])
+        com.raptor.test06.RuntimeAnnotation(
+          value=["field3 value"]
+        )
+
+  int field4;
+    descriptor: I
+    flags: (0x0000)
+    RuntimeVisibleAnnotations:
+      0: #27(#23=[s#30],#31=I#32)
+        com.raptor.test06.RuntimeAnnotation(
+          value=["field4 value"]
+          optionalValue=1
+        )
+
+  int field5;
+    descriptor: I
+    flags: (0x0000)
+    RuntimeVisibleAnnotations:
+      0: #27(#23=[s#34],#35=c#36)
+        com.raptor.test06.RuntimeAnnotation(
+          value=["field5 value"]
+          optionalClass=class Ljava/lang/String;
+        )
+    RuntimeInvisibleAnnotations:
+      0: #22(#23=s#34)
+        com.raptor.test06.ClassOnlyAnnotation(
+          value="field5 value"
+        )
+
+  int field6;
+    descriptor: I
+    flags: (0x0000)
+    RuntimeVisibleAnnotations:
+      0: #27(#23=[s#38],#31=I#39,#35=c#40,#41=@#22(#23=s#38),#42=Z#32,#43=C#44)
+        com.raptor.test06.RuntimeAnnotation(
+          value=["field6 value"]
+          optionalValue=66
+          optionalClass=class Ljava/lang/Object;
+          annotation=@com.raptor.test06.ClassOnlyAnnotation(
+            value="field6 value"
+          )
+          flag=true
+          c='A'
+        )
+
+  public com.raptor.test06.TestClass06();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 6: 0
+
+  java.lang.String stringConstant();
+    descriptor: ()Ljava/lang/String;
+    flags: (0x0000)
+    Code:
+      stack=1, locals=1, args_size=1
+         0: ldc           #7                  // String test string\n\u0000\"
+         2: areturn
+      LineNumberTable:
+        line 8: 0
+
+  java.lang.Class<java.lang.String> classConstant();
+    descriptor: ()Ljava/lang/Class;
+    flags: (0x0000)
+    Code:
+      stack=1, locals=1, args_size=1
+         0: ldc           #9                  // class java/lang/String
+         2: areturn
+      LineNumberTable:
+        line 12: 0
+    Signature: #52                          // ()Ljava/lang/Class<Ljava/lang/String;>;
+
+  java.util.function.Predicate<java.lang.Object> lambda();
+    descriptor: ()Ljava/util/function/Predicate;
+    flags: (0x0000)
+    Code:
+      stack=1, locals=1, args_size=1
+         0: invokedynamic #11,  0             // InvokeDynamic #0:test:()Ljava/util/function/Predicate;
+         5: areturn
+      LineNumberTable:
+        line 16: 0
+    Signature: #54                          // ()Ljava/util/function/Predicate<Ljava/lang/Object;>;
+
+  java.util.function.Predicate<java.lang.String> methodReference();
+    descriptor: ()Ljava/util/function/Predicate;
+    flags: (0x0000)
+    Code:
+      stack=1, locals=1, args_size=1
+         0: invokedynamic #15,  0             // InvokeDynamic #1:test:()Ljava/util/function/Predicate;
+         5: areturn
+      LineNumberTable:
+        line 20: 0
+    Signature: #56                          // ()Ljava/util/function/Predicate<Ljava/lang/String;>;
+
+  private static boolean lambda$lambda$0(java.lang.Object);
+    descriptor: (Ljava/lang/Object;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: ifnull        8
+         4: iconst_1
+         5: goto          9
+         8: iconst_0
+         9: ireturn
+      LineNumberTable:
+        line 16: 0
+      StackMapTable: number_of_entries = 2
+        frame_type = 8 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+}
+SourceFile: "TestClass06.java"
+BootstrapMethods:
+  0: #63 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #70 (Ljava/lang/Object;)Z
+      #71 REF_invokeStatic com/raptor/test06/TestClass06.lambda$lambda$0:(Ljava/lang/Object;)Z
+      #70 (Ljava/lang/Object;)Z
+  1: #63 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #70 (Ljava/lang/Object;)Z
+      #74 REF_invokeVirtual java/lang/String.isEmpty:()Z
+      #79 (Ljava/lang/String;)Z
+InnerClasses:
+  public static final #86= #82 of #84;    // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles

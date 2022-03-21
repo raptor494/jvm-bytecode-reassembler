@@ -1,0 +1,23 @@
+Classfile /C:/Users/flyin/Documents/Java/asm-recompiler/src/test/java/com/raptor/test06/TestClass06b.class
+  Last modified Mar 21, 2022; size 150 bytes
+  SHA-256 checksum 6b33338c22aaefd3cbc2524f992a96cd679b6a1f0d9e0568d0f5eaf5135866a1
+  Compiled from "TestClass06b.java"
+public interface com.raptor.test06.TestClass06b extends java.lang.Cloneable
+  minor version: 0
+  major version: 61
+  flags: (0x0601) ACC_PUBLIC, ACC_INTERFACE, ACC_ABSTRACT
+  this_class: #1                          // com/raptor/test06/TestClass06b
+  super_class: #3                         // java/lang/Object
+  interfaces: 1, fields: 0, methods: 0, attributes: 1
+Constant pool:
+  #1 = Class              #2              // com/raptor/test06/TestClass06b
+  #2 = Utf8               com/raptor/test06/TestClass06b
+  #3 = Class              #4              // java/lang/Object
+  #4 = Utf8               java/lang/Object
+  #5 = Class              #6              // java/lang/Cloneable
+  #6 = Utf8               java/lang/Cloneable
+  #7 = Utf8               SourceFile
+  #8 = Utf8               TestClass06b.java
+{
+}
+SourceFile: "TestClass06b.java"

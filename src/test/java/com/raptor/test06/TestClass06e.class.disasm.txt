@@ -1,0 +1,23 @@
+Classfile /C:/Users/flyin/Documents/Java/asm-recompiler/src/test/java/com/raptor/test06/TestClass06e.class
+  Last modified Mar 21, 2022; size 162 bytes
+  SHA-256 checksum 1a06841477bd6d01d2af391302a9b5054319921113e052bfdefb16f131c2661f
+  Compiled from "TestClass06e.java"
+public interface com.raptor.test06.TestClass06e extends java.lang.annotation.Annotation
+  minor version: 0
+  major version: 61
+  flags: (0x2601) ACC_PUBLIC, ACC_INTERFACE, ACC_ABSTRACT, ACC_ANNOTATION
+  this_class: #1                          // com/raptor/test06/TestClass06e
+  super_class: #3                         // java/lang/Object
+  interfaces: 1, fields: 0, methods: 0, attributes: 1
+Constant pool:
+  #1 = Class              #2              // com/raptor/test06/TestClass06e
+  #2 = Utf8               com/raptor/test06/TestClass06e
+  #3 = Class              #4              // java/lang/Object
+  #4 = Utf8               java/lang/Object
+  #5 = Class              #6              // java/lang/annotation/Annotation
+  #6 = Utf8               java/lang/annotation/Annotation
+  #7 = Utf8               SourceFile
+  #8 = Utf8               TestClass06e.java
+{
+}
+SourceFile: "TestClass06e.java"

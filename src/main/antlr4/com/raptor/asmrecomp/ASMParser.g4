@@ -11,6 +11,7 @@ import static org.objectweb.asm.Opcodes.*;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.AnnotationVisitor;
 import org.objectweb.asm.Handle;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.Label;
@@ -25,136 +26,136 @@ import com.raptor.asmrecomp.ASMParserUtils.*;
 }
 
 @members {
-    protected LinkedList<HashMap<String, TypeParameterContext>> typeParameters = new LinkedList<>();
-    {typeParameters.add(new HashMap<>());}
-    
-    protected HashMap<String, Label> labels;
-    
-    protected ArrayList<String> varnames;
-    protected int localVarMode;
-    protected boolean addedThisLocalVar, methodIsStatic;
-    protected static final int MODE_INDICES = 1, MODE_NAMES = 2, MODE_UNDECIDED = 0;
+protected LinkedList<HashMap<String, TypeParameterContext>> typeParameters = new LinkedList<>();
+{typeParameters.add(new HashMap<>());}
 
-    protected String currentClassName;
-    
-    protected boolean debug = false;
-    
-    protected void enterScope() {
-        typeParameters.add(new HashMap<>());
-    }
-    
-    protected void exitScope() {
-        typeParameters.removeLast();
-    }
-    
-    protected boolean hasTypeParameter(String name) {
-        for (var iter = typeParameters.descendingIterator(); iter.hasNext();) {
-            if (iter.next().containsKey(name)) return true;
-        }
-        return false;
-    }
-    
-    protected void addTypeParameter(String name, TypeParameterContext ctx) {
-        typeParameters.getLast().put(name, ctx);
-    }
-    
-    protected TypeParameterContext lookupTypeParameter(String name) {
-        for (var iter = typeParameters.descendingIterator(); iter.hasNext();) {
-            var res = iter.next().get(name);
-            if (res != null) return res;
-        }
-        return null;
-    }
-    
-    protected String[] getDescriptorsArray(SuperinterfacesContext ctx) {
-        return ctx == null? new String[0] : ctx.interfaceTypeList().classOrInterfaceType().stream().map(classOrInterfaceType -> classOrInterfaceType.accept(new DescriptorVisitor(this::lookupTypeParameter)).toString()).toArray(String[]::new);
-    }
-    
-    protected String[] getDescriptorsArray(ExceptionsContext ctx) {
-        return ctx == null? new String[0] : ctx.exceptionTypeList().exceptionType().stream().map(exceptionType -> exceptionType.classOrInterfaceType().accept(new DescriptorVisitor(this::lookupTypeParameter)).toString()).toArray(String[]::new);
-    }
-    
-    protected Label getLabel(String name) {
-        return labels.computeIfAbsent(name, unused -> new Label());
-    }    
+protected HashMap<String, Label> labels;
 
-    protected int getVariable(String name) {
-        switch (localVarMode) {
-            case MODE_UNDECIDED -> localVarMode = MODE_NAMES;
-            case MODE_INDICES -> throw new IllegalStateException("Invalid mixture of index and variable names");
-        }
-        var names = this.varnames;
-        if (names == null) {
-            this.varnames = names = new ArrayList<>();
-        }
-        if (names.isEmpty()) {
-            if (!methodIsStatic && !addedThisLocalVar) {
-                names.add("this");
-                addedThisLocalVar = true;
-            }
-        }
-        int i = names.indexOf(name);
-        if (i == -1) {
-            i = names.size();
-            names.add(name);
-        }
-        return i;
-    }
-    
-    protected String getDescriptor(RuleContext ctx) {
-        return ctx.accept(new DescriptorVisitor(this::lookupTypeParameter)).toString();
-    }
-    
-    protected String getSignature(RuleContext ctx) {
-        var signature = ctx.accept(new SignatureVisitor(this::hasTypeParameter)).toString();
-        return signature.isEmpty()? null : signature;
-    }
+protected ArrayList<String> varnames;
+protected int localVarMode;
+protected boolean addedThisLocalVar, methodIsStatic;
+protected static final int MODE_INDICES = 1, MODE_NAMES = 2, MODE_UNDECIDED = 0;
 
-    protected String getOwner(FieldRefContext ctx) {
-        if (ctx.classOrInterfaceType() != null) return dottedNameToSlashedName(ctx.classOrInterfaceType().qualifiedTypeIdentifier().str);
-        return dottedNameToSlashedName(currentClassName);
-    }
+protected String currentClassName;
 
-    protected String getOwner(MethodRefContext ctx) {
-        if (ctx.classOrInterfaceType() != null) return dottedNameToSlashedName(ctx.classOrInterfaceType().qualifiedTypeIdentifier().str);
-        return dottedNameToSlashedName(currentClassName);
-    }
+protected boolean debug = false;
 
-    protected Handle getHandle(HandleContext ctx) {
-        int tag = switch (ctx.name.getType()) {
-            case KW_GETFIELD -> H_GETFIELD;
-            case KW_GETSTATIC -> H_GETSTATIC;
-            case KW_PUTFIELD -> H_PUTFIELD;
-            case KW_PUTSTATIC -> H_PUTSTATIC;
-            case KW_INVOKEVIRTUAL -> H_INVOKEVIRTUAL;
-            case KW_INVOKESTATIC -> H_INVOKESTATIC;
-            case KW_INVOKESPECIAL -> ctx.isNewInvokeSpecial? H_INVOKESPECIAL : H_NEWINVOKESPECIAL;
-            case KW_INVOKEINTERFACE -> H_INVOKEINTERFACE;
-            default -> throw new IllegalArgumentException();
-        };
-        String owner, name, descriptor;
-        switch (ctx.name.getType()) {
-        case KW_GETFIELD, KW_GETSTATIC, KW_PUTFIELD, KW_PUTSTATIC:
-            var fieldRef = ctx.fieldRef();
-            owner = getOwner(fieldRef);
-            name = fieldRef.name;
-            descriptor = getDescriptor(fieldRef);
-            break;
-        case KW_INVOKEVIRTUAL, KW_INVOKESTATIC, KW_INVOKESPECIAL, KW_INVOKEINTERFACE:
-            var methodRef = ctx.methodRef();
-            owner = getOwner(methodRef);
-            name = methodRef.name;
-            descriptor = getDescriptor(methodRef);
-            break;
-        default:
-            throw new AssertionError();
+protected void enterScope() {
+    typeParameters.add(new HashMap<>());
+}
+
+protected void exitScope() {
+    typeParameters.removeLast();
+}
+
+protected boolean hasTypeParameter(String name) {
+    for (var iter = typeParameters.descendingIterator(); iter.hasNext();) {
+        if (iter.next().containsKey(name)) return true;
+    }
+    return false;
+}
+
+protected void addTypeParameter(String name, TypeParameterContext ctx) {
+    typeParameters.getLast().put(name, ctx);
+}
+
+protected TypeParameterContext lookupTypeParameter(String name) {
+    for (var iter = typeParameters.descendingIterator(); iter.hasNext();) {
+        var res = iter.next().get(name);
+        if (res != null) return res;
+    }
+    return null;
+}
+
+protected String[] getDescriptorsArray(SuperinterfacesContext ctx) {
+    return ctx == null? new String[0] : ctx.interfaceTypeList().classOrInterfaceType().stream().map(classOrInterfaceType -> classOrInterfaceType.accept(new DescriptorVisitor(this::lookupTypeParameter)).toString()).toArray(String[]::new);
+}
+
+protected String[] getDescriptorsArray(ExceptionsContext ctx) {
+    return ctx == null? new String[0] : ctx.exceptionTypeList().exceptionType().stream().map(exceptionType -> exceptionType.classOrInterfaceType().accept(new DescriptorVisitor(this::lookupTypeParameter)).toString()).toArray(String[]::new);
+}
+
+protected Label getLabel(String name) {
+    return labels.computeIfAbsent(name, unused -> new Label());
+}    
+
+protected int getVariable(String name) {
+    switch (localVarMode) {
+        case MODE_UNDECIDED -> localVarMode = MODE_NAMES;
+        case MODE_INDICES -> throw new IllegalStateException("Invalid mixture of index and variable names");
+    }
+    var names = this.varnames;
+    if (names == null) {
+        this.varnames = names = new ArrayList<>();
+    }
+    if (names.isEmpty()) {
+        if (!methodIsStatic && !addedThisLocalVar) {
+            names.add("this");
+            addedThisLocalVar = true;
         }
-        return new Handle(tag, owner, name, descriptor);
     }
-    
-    public void debugEnabled(boolean debug) {
-        this.debug = debug;
+    int i = names.indexOf(name);
+    if (i == -1) {
+        i = names.size();
+        names.add(name);
     }
+    return i;
+}
+
+protected String getDescriptor(RuleContext ctx) {
+    return ctx.accept(new DescriptorVisitor(this::lookupTypeParameter)).toString();
+}
+
+protected String getSignature(RuleContext ctx) {
+    var signature = ctx.accept(new SignatureVisitor(this::hasTypeParameter)).toString();
+    return signature.isEmpty()? null : signature;
+}
+
+protected String getOwner(FieldRefContext ctx) {
+    if (ctx.classOrInterfaceType() != null) return dottedNameToSlashedName(ctx.classOrInterfaceType().qualifiedTypeIdentifier().str);
+    return dottedNameToSlashedName(currentClassName);
+}
+
+protected String getOwner(MethodRefContext ctx) {
+    if (ctx.classOrInterfaceType() != null) return dottedNameToSlashedName(ctx.classOrInterfaceType().qualifiedTypeIdentifier().str);
+    return dottedNameToSlashedName(currentClassName);
+}
+
+protected Handle getHandle(HandleContext ctx) {
+    int tag = switch (ctx.name.getType()) {
+        case KW_GETFIELD -> H_GETFIELD;
+        case KW_GETSTATIC -> H_GETSTATIC;
+        case KW_PUTFIELD -> H_PUTFIELD;
+        case KW_PUTSTATIC -> H_PUTSTATIC;
+        case KW_INVOKEVIRTUAL -> H_INVOKEVIRTUAL;
+        case KW_INVOKESTATIC -> H_INVOKESTATIC;
+        case KW_INVOKESPECIAL -> ctx.isNewInvokeSpecial? H_INVOKESPECIAL : H_NEWINVOKESPECIAL;
+        case KW_INVOKEINTERFACE -> H_INVOKEINTERFACE;
+        default -> throw new IllegalArgumentException();
+    };
+    String owner, name, descriptor;
+    switch (ctx.name.getType()) {
+    case KW_GETFIELD, KW_GETSTATIC, KW_PUTFIELD, KW_PUTSTATIC:
+        var fieldRef = ctx.fieldRef();
+        owner = getOwner(fieldRef);
+        name = fieldRef.name;
+        descriptor = getDescriptor(fieldRef);
+        break;
+    case KW_INVOKEVIRTUAL, KW_INVOKESTATIC, KW_INVOKESPECIAL, KW_INVOKEINTERFACE:
+        var methodRef = ctx.methodRef();
+        owner = getOwner(methodRef);
+        name = methodRef.name;
+        descriptor = getDescriptor(methodRef);
+        break;
+    default:
+        throw new AssertionError();
+    }
+    return new Handle(tag, owner, name, descriptor);
+}
+
+public void debugEnabled(boolean debug) {
+    this.debug = debug;
+}
     
 }
 
@@ -293,10 +294,12 @@ interfaceTypeList
     
 classBody[ClassVisitor cw]
     :   '{' classBodyDeclaration[$cw]* '}'
+        annotationsBlock[($cw)::visitAnnotation]
     ;
     
 interfaceBody[ClassVisitor cw]
     :   '{' interfaceBodyDeclaration[$cw]* '}'
+        annotationsBlock[($cw)::visitAnnotation]
     ;
     
 //
@@ -366,6 +369,10 @@ locals [int flags]
             if ($ctx.typeParameters() != null) exitScope();
             if (localVarMode == MODE_NAMES) varnames = null;
         }
+        annotationsBlock[mv::visitAnnotation]
+        {
+            mv.visitEnd();
+        }
     ;
     
 constructorModifier[int flags]
@@ -425,6 +432,10 @@ locals [int flags]
             if ($ctx.typeParameters() != null) exitScope();
             if (localVarMode == MODE_NAMES) varnames = null;
         }
+        annotationsBlock[mv::visitAnnotation]
+        {
+            mv.visitEnd();
+        }
     ;
 
 methodModifier[int flags]
@@ -474,6 +485,9 @@ locals [int flags]
                 // value
                 initialValue
             );
+        }
+        annotationsBlock[fv::visitAnnotation]
+        {
             fv.visitEnd();
         }
     ;
@@ -1385,6 +1399,60 @@ returns [String str]
     ;
 
 //
+// Annotations
+//
+
+annotationsBlock[AnnotationAcceptor annotationAcceptor]
+    :   runtimeVisibleAnnotations[$annotationAcceptor] runtimeInvisibleAnnotations[$annotationAcceptor]?
+    |   runtimeInvisibleAnnotations[$annotationAcceptor] runtimeVisibleAnnotations[$annotationAcceptor]?
+    |   ()
+    ;
+
+runtimeVisibleAnnotations[AnnotationAcceptor annotationAcceptor]
+    :   'RuntimeVisibleAnnotations' ':' annotation[$annotationAcceptor, true]*
+    ;
+
+runtimeInvisibleAnnotations[AnnotationAcceptor annotationAcceptor]
+    :   'RuntimeInvisibleAnnotations' ':' annotation[$annotationAcceptor, false]*
+    ;
+
+annotation[AnnotationAcceptor annotationAcceptor, boolean visible]
+    : '@' classOrInterfaceType {$ctx.classOrInterfaceType().typeArguments() == null}?<fail='Type arguments not allowed in annotations'>
+    {
+        var av = annotationAcceptor.visitAnnotation(getDescriptor($ctx.classOrInterfaceType()), $visible);
+    }
+      annotationArguments[av]?
+    {
+        av.visitEnd();
+    }
+    ;
+
+annotationArguments[AnnotationVisitor av]
+    : '(' ')'
+    | '(' annotationValue["value", $av] ')'
+    | '(' annotationKeyValue[$av] (',' annotationKeyValue[$av])* ')'
+    ;
+
+annotationKeyValue[AnnotationVisitor av]
+    : name=Identifier '=' value=annotationValue[$name.text, $av]
+    ;
+
+annotationValue[String name, AnnotationVisitor av]
+    :   'true'                  {$av.visit($name, true);}
+    |   'false'                 {$av.visit($name, false);}
+    |   signedIntegerLiteral    {$av.visit($name, $signedIntegerLiteral.value);}
+    |   signedLongLiteral       {$av.visit($name, $signedLongLiteral.value);}
+    |   floatLiteral            {$av.visit($name, $floatLiteral.value);}
+    |   doubleLiteral           {$av.visit($name, $doubleLiteral.value);}
+    |   stringLiteral           {$av.visit($name, $stringLiteral.value);}
+    |   characterLiteral        {$av.visit($name, $characterLiteral.value);}
+    |   {final var av2 = $av; final var name2 = $name;} annotation[(descriptor, visible) -> av2.visitAnnotation(name2, descriptor), false]
+    |   type '.' 'class'        {$av.visit($name, Type.getType(getDescriptor($ctx.type())));}
+    |   referenceType '.' Identifier {$av.visitEnum($name, getDescriptor($ctx.referenceType()), $Identifier.text);}
+    |   '{' {var av2 = $av.visitArray($name);} (annotationValue[null, av2] (',' annotationValue[null, av2])* ','?)? '}'
+    ;
+
+//
 // LEXER
 //
 
@@ -1399,7 +1467,7 @@ identifier
 returns [String str]
 @after {$str = $text;}
     : Identifier 
-    | KW_CODE | KW_DEPRECATED | KW_BRIDGE | KW_MANDATED | KW_SYNTHETIC | KW_AASTORE | KW_ACONST_NULL | KW_ALOAD | KW_ALOAD_0 | KW_ALOAD_1 | KW_ALOAD_2 | KW_ALOAD_3 | KW_ANEWARRAY | KW_ARETURN | KW_ARRAYLENGTH | KW_ASTORE | KW_ASTORE_0 | KW_ASTORE_1 | KW_ASTORE_2 | KW_ASTORE_3 | KW_ATHROW | KW_BALOAD | KW_BASTORE | KW_BIPUSH | KW_CALOAD | KW_CASTORE | KW_CHECKCAST | KW_D2F | KW_D2I | KW_D2L | KW_DADD | KW_DALOAD | KW_DASTORE | KW_DCMPG | KW_DCMPL | KW_DCONST_0 | KW_DCONST_1 | KW_DDIV | KW_DLOAD | KW_DLOAD_0 | KW_DLOAD_1 | KW_DLOAD_2 | KW_DLOAD_3 | KW_DMUL | KW_DNEG | KW_DREM | KW_DRETURN | KW_DSTORE | KW_DSTORE_0 | KW_DSTORE_1 | KW_DSTORE_2 | KW_DSTORE_3 | KW_DSUB | KW_DUP | KW_DUP_X1 | KW_DUP_X2 | KW_DUP2 | KW_DUP2_X1 | KW_DUP2_X2 | KW_F2D | KW_F2I | KW_F2L | KW_FADD | KW_FALOAD | KW_FASTORE | KW_FCMPG | KW_FCMPL | KW_FCONST_0 | KW_FCONST_1 | KW_FCONST_2 | KW_FDIV | KW_FLOAD | KW_FLOAD_0 | KW_FLOAD_1 | KW_FLOAD_2 | KW_FLOAD_3 | KW_FMUL | KW_FNEG | KW_FREM | KW_FRETURN | KW_FSTORE | KW_FSTORE_0 | KW_FSTORE_1 | KW_FSTORE_2 | KW_FSTORE_3 | KW_FSUB | KW_GETFIELD | KW_GETSTATIC | KW_GOTO_W | KW_I2B | KW_I2C | KW_I2D | KW_I2F | KW_I2L | KW_I2S | KW_IADD | KW_IALOAD | KW_IAND | KW_IASTORE | KW_ICONST_M1 | KW_ICONST_0 | KW_ICONST_1 | KW_ICONST_2 | KW_ICONST_3 | KW_ICONST_4 | KW_ICONST_5 | KW_IDIV | KW_IF_ACMPEQ | KW_IF_ACMPNE | KW_IF_ICMPEQ | KW_IF_ICMPNE | KW_IF_ICMPLT | KW_IF_ICMPGE | KW_IF_ICMPGT | KW_IF_ICMPLE | KW_IFEQ | KW_IFNE | KW_IFLT | KW_IFGE | KW_IFGT | KW_IFLE | KW_IFNONNULL | KW_IFNULL | KW_IINC | KW_ILOAD | KW_ILOAD_0 | KW_ILOAD_1 | KW_ILOAD_2 | KW_ILOAD_3 | KW_IMUL | KW_INEG | KW_INVOKEDYNAMIC | KW_INVOKEINTERFACE | KW_INVOKESPECIAL | KW_INVOKESTATIC | KW_INVOKEVIRTUAL | KW_IOR | KW_IREM | KW_IRETURN | KW_ISHL | KW_ISHR | KW_ISTORE | KW_ISTORE_0 | KW_ISTORE_1 | KW_ISTORE_2 | KW_ISTORE_3 | KW_ISUB | KW_IUSHR | KW_IXOR | KW_JSR | KW_JSR_W | KW_L2D | KW_L2F | KW_L2I | KW_LADD | KW_LALOAD | KW_LAND | KW_LASTORE | KW_LCMP | KW_LCONST_0 | KW_LCONST_1 | KW_LDC | KW_LDC_W | KW_LDC2_W | KW_LDIV | KW_LLOAD | KW_LLOAD_0 | KW_LLOAD_1 | KW_LLOAD_2 | KW_LLOAD_3 | KW_LMUL | KW_LNEG | KW_LOOKUPSWITCH | KW_LOR | KW_LREM | KW_LRETURN | KW_LSHL | KW_LSHR | KW_LSTORE | KW_LSTORE_0 | KW_LSTORE_1 | KW_LSTORE_2 | KW_LSTORE_3 | KW_LSUB | KW_LUSHR | KW_LXOR | KW_MONITORENTER | KW_MONITOREXIT | KW_MULTIANEWARRAY | KW_NEWARRAY | KW_NOP | KW_POP | KW_POP2 | KW_PUTFIELD | KW_PUTSTATIC | KW_RET | KW_SALOAD | KW_SASTORE | KW_SIPUSH | KW_SWAP | KW_TABLESWITCH | KW_WIDE
+    | KW_CODE | KW_RUNTIME_VISIBILE_ANNOTATIONS | KW_RUNTIME_INVISIBLE_ANNOTATIONS | KW_DEPRECATED | KW_BRIDGE | KW_MANDATED | KW_SYNTHETIC | KW_AASTORE | KW_ACONST_NULL | KW_ALOAD | KW_ALOAD_0 | KW_ALOAD_1 | KW_ALOAD_2 | KW_ALOAD_3 | KW_ANEWARRAY | KW_ARETURN | KW_ARRAYLENGTH | KW_ASTORE | KW_ASTORE_0 | KW_ASTORE_1 | KW_ASTORE_2 | KW_ASTORE_3 | KW_ATHROW | KW_BALOAD | KW_BASTORE | KW_BIPUSH | KW_CALOAD | KW_CASTORE | KW_CHECKCAST | KW_D2F | KW_D2I | KW_D2L | KW_DADD | KW_DALOAD | KW_DASTORE | KW_DCMPG | KW_DCMPL | KW_DCONST_0 | KW_DCONST_1 | KW_DDIV | KW_DLOAD | KW_DLOAD_0 | KW_DLOAD_1 | KW_DLOAD_2 | KW_DLOAD_3 | KW_DMUL | KW_DNEG | KW_DREM | KW_DRETURN | KW_DSTORE | KW_DSTORE_0 | KW_DSTORE_1 | KW_DSTORE_2 | KW_DSTORE_3 | KW_DSUB | KW_DUP | KW_DUP_X1 | KW_DUP_X2 | KW_DUP2 | KW_DUP2_X1 | KW_DUP2_X2 | KW_F2D | KW_F2I | KW_F2L | KW_FADD | KW_FALOAD | KW_FASTORE | KW_FCMPG | KW_FCMPL | KW_FCONST_0 | KW_FCONST_1 | KW_FCONST_2 | KW_FDIV | KW_FLOAD | KW_FLOAD_0 | KW_FLOAD_1 | KW_FLOAD_2 | KW_FLOAD_3 | KW_FMUL | KW_FNEG | KW_FREM | KW_FRETURN | KW_FSTORE | KW_FSTORE_0 | KW_FSTORE_1 | KW_FSTORE_2 | KW_FSTORE_3 | KW_FSUB | KW_GETFIELD | KW_GETSTATIC | KW_GOTO_W | KW_I2B | KW_I2C | KW_I2D | KW_I2F | KW_I2L | KW_I2S | KW_IADD | KW_IALOAD | KW_IAND | KW_IASTORE | KW_ICONST_M1 | KW_ICONST_0 | KW_ICONST_1 | KW_ICONST_2 | KW_ICONST_3 | KW_ICONST_4 | KW_ICONST_5 | KW_IDIV | KW_IF_ACMPEQ | KW_IF_ACMPNE | KW_IF_ICMPEQ | KW_IF_ICMPNE | KW_IF_ICMPLT | KW_IF_ICMPGE | KW_IF_ICMPGT | KW_IF_ICMPLE | KW_IFEQ | KW_IFNE | KW_IFLT | KW_IFGE | KW_IFGT | KW_IFLE | KW_IFNONNULL | KW_IFNULL | KW_IINC | KW_ILOAD | KW_ILOAD_0 | KW_ILOAD_1 | KW_ILOAD_2 | KW_ILOAD_3 | KW_IMUL | KW_INEG | KW_INVOKEDYNAMIC | KW_INVOKEINTERFACE | KW_INVOKESPECIAL | KW_INVOKESTATIC | KW_INVOKEVIRTUAL | KW_IOR | KW_IREM | KW_IRETURN | KW_ISHL | KW_ISHR | KW_ISTORE | KW_ISTORE_0 | KW_ISTORE_1 | KW_ISTORE_2 | KW_ISTORE_3 | KW_ISUB | KW_IUSHR | KW_IXOR | KW_JSR | KW_JSR_W | KW_L2D | KW_L2F | KW_L2I | KW_LADD | KW_LALOAD | KW_LAND | KW_LASTORE | KW_LCMP | KW_LCONST_0 | KW_LCONST_1 | KW_LDC | KW_LDC_W | KW_LDC2_W | KW_LDIV | KW_LLOAD | KW_LLOAD_0 | KW_LLOAD_1 | KW_LLOAD_2 | KW_LLOAD_3 | KW_LMUL | KW_LNEG | KW_LOOKUPSWITCH | KW_LOR | KW_LREM | KW_LRETURN | KW_LSHL | KW_LSHR | KW_LSTORE | KW_LSTORE_0 | KW_LSTORE_1 | KW_LSTORE_2 | KW_LSTORE_3 | KW_LSUB | KW_LUSHR | KW_LXOR | KW_MONITORENTER | KW_MONITOREXIT | KW_MULTIANEWARRAY | KW_NEWARRAY | KW_NOP | KW_POP | KW_POP2 | KW_PUTFIELD | KW_PUTSTATIC | KW_RET | KW_SALOAD | KW_SASTORE | KW_SIPUSH | KW_SWAP | KW_TABLESWITCH | KW_WIDE
     ;
     
 signedByteLiteral

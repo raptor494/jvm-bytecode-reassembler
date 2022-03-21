@@ -7,12 +7,20 @@ import java.nio.file.Paths;
 import org.antlr.v4.runtime.BailErrorStrategy;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 
 import com.raptor.asmrecomp.ASMParser.CompilationUnitContext;
 
 public class Test02 {
 	private static final CustomClassLoader cl = new CustomClassLoader();
-	
+
+	@BeforeAll
+	static void beforeClass() throws Exception {
+		// Files.createDirectories(Paths.get("testfiles/test02"));
+		// System.setProperty("user.dir", "testfiles/test02");	
+	}
+
 	public static void main(String[] args) throws Exception {
 		Class<?> Test01 = compileClass("Test01.disasm.txt");
 		Class<?> Test02 = compileClass("Test02.disasm.txt");
@@ -45,10 +53,14 @@ public class Test02 {
 		byte[] bytes = unit.cw.toByteArray();
 		var clazz = cl.defineClass(unit.name, bytes);
 		var path = Paths.get(clazz.getName().replace('.', '/') + ".class");
-		path.getParent().toFile().mkdirs();
+		Files.createDirectories(path.getParent());
 		Files.write(path, bytes);
-		var pb = new ProcessBuilder("cmd", "/c", "javap14 -c -v -p " + clazz.getName());
-		pb.redirectOutput(ProcessBuilder.Redirect.to(new File(path + ".disasm.txt")));
+		var pb = new ProcessBuilder("cmd", "/c", "javap -c -v -p " + clazz.getName());
+		System.out.println(String.join(" ", pb.command()));
+		ProcessBuilder.Redirect redirect;
+		redirect = ProcessBuilder.Redirect.to(new File(path + ".disasm.txt"));
+		// redirect = ProcessBuilder.Redirect.INHERIT;
+		pb.redirectOutput(redirect);
 		var p = pb.start();
 		p.waitFor();
 		return clazz;

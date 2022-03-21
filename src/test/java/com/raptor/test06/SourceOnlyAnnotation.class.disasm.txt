@@ -1,0 +1,33 @@
+Classfile /C:/Users/flyin/Documents/Java/asm-recompiler/src/test/java/com/raptor/test06/SourceOnlyAnnotation.class
+  Last modified Mar 21, 2022; size 318 bytes
+  SHA-256 checksum 4c359ec565303ed730c2c02426fd082b5608d672ce3f271b66459d97b8b8693d
+  Compiled from "SourceOnlyAnnotation.java"
+public interface com.raptor.test06.SourceOnlyAnnotation extends java.lang.annotation.Annotation
+  minor version: 0
+  major version: 61
+  flags: (0x2601) ACC_PUBLIC, ACC_INTERFACE, ACC_ABSTRACT, ACC_ANNOTATION
+  this_class: #1                          // com/raptor/test06/SourceOnlyAnnotation
+  super_class: #3                         // java/lang/Object
+  interfaces: 1, fields: 0, methods: 0, attributes: 2
+Constant pool:
+   #1 = Class              #2             // com/raptor/test06/SourceOnlyAnnotation
+   #2 = Utf8               com/raptor/test06/SourceOnlyAnnotation
+   #3 = Class              #4             // java/lang/Object
+   #4 = Utf8               java/lang/Object
+   #5 = Class              #6             // java/lang/annotation/Annotation
+   #6 = Utf8               java/lang/annotation/Annotation
+   #7 = Utf8               SourceFile
+   #8 = Utf8               SourceOnlyAnnotation.java
+   #9 = Utf8               RuntimeVisibleAnnotations
+  #10 = Utf8               Ljava/lang/annotation/Retention;
+  #11 = Utf8               value
+  #12 = Utf8               Ljava/lang/annotation/RetentionPolicy;
+  #13 = Utf8               SOURCE
+{
+}
+SourceFile: "SourceOnlyAnnotation.java"
+RuntimeVisibleAnnotations:
+  0: #10(#11=e#12.#13)
+    java.lang.annotation.Retention(
+      value=Ljava/lang/annotation/RetentionPolicy;.SOURCE
+    )

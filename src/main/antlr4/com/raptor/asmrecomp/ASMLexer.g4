@@ -11,74 +11,76 @@ import com.raptor.antlr.denterhelper.InvalidDedentException;
 }
 
 @members {
-    /*
-    private boolean enableDenter = false;
-    private int indentCount;
-    private final DenterHelper denter = new DenterHelper(NL, INDENT, DEDENT) {
-        protected Token pullToken() {
-            return ASMLexer.super.nextToken();
-        }
-        protected void handlePartialDedent(int prevIndent, int targetIndent, Token copyFrom) {
-            //indentations.clear();
-            //indentations.push(0);
-            //System.out.println(dentsBuffer);
-            //dentsBuffer.removeIf(tk -> tk.getType() == indentToken || tk.getType() == dedentToken || tk.getType() == nlToken);
-            //dentsBuffer.offerFirst(createToken(dedentToken, copyFrom));
-            //throw new InvalidDedentException(ASMLexer.this, _input, null);
-            //super.handlePartialDedent(prevIndent, targetIndent, copyFrom);
-            disable();
-        }
-    };
-    {denter.disable();}
-    private Token prevToken, prevPrevToken;
-    
-    @Override
-    public Token nextToken() {
-        Token token;
-        token = denter.nextToken();
-        if (denter.isEnabled()) {
-            switch (token.getType()) {
-                case NL -> {
-                    if (indentCount == 0) {
-                        denter.disable();                  
-                    } else {
-                        ((WritableToken)token).setChannel(0);
-                    }
-                }
-                case INDENT -> {
-                    indentCount++;
-                    ((WritableToken)token).setChannel(0);
-                }
-                case DEDENT -> {
-                    if (--indentCount == 0) {
-                        denter.disable();
-                    }
+/*
+private boolean enableDenter = false;
+private int indentCount;
+private final DenterHelper denter = new DenterHelper(NL, INDENT, DEDENT) {
+    protected Token pullToken() {
+        return ASMLexer.super.nextToken();
+    }
+    protected void handlePartialDedent(int prevIndent, int targetIndent, Token copyFrom) {
+        //indentations.clear();
+        //indentations.push(0);
+        //System.out.println(dentsBuffer);
+        //dentsBuffer.removeIf(tk -> tk.getType() == indentToken || tk.getType() == dedentToken || tk.getType() == nlToken);
+        //dentsBuffer.offerFirst(createToken(dedentToken, copyFrom));
+        //throw new InvalidDedentException(ASMLexer.this, _input, null);
+        //super.handlePartialDedent(prevIndent, targetIndent, copyFrom);
+        disable();
+    }
+};
+{denter.disable();}
+private Token prevToken, prevPrevToken;
+
+@Override
+public Token nextToken() {
+    Token token;
+    token = denter.nextToken();
+    if (denter.isEnabled()) {
+        switch (token.getType()) {
+            case NL -> {
+                if (indentCount == 0) {
+                    denter.disable();                  
+                } else {
                     ((WritableToken)token).setChannel(0);
                 }
             }
-        } else {
-//            if (token.getType() == NL) {
-//                if (prevPrevToken != null && prevPrevToken.getType() == KW_CODE && prevToken.getType() == COLON) {
-//                    denter.reset();
-//                    denter.enable(); 
-//                }
-//            }
-//            if (token.getType() == COLON) {
-//                if (prevToken != null && prevToken.getType() == KW_CODE) {
-//                    denter.reset();
-//                    denter.enable();
-//                }
-//            }
+            case INDENT -> {
+                indentCount++;
+                ((WritableToken)token).setChannel(0);
+            }
+            case DEDENT -> {
+                if (--indentCount == 0) {
+                    denter.disable();
+                }
+                ((WritableToken)token).setChannel(0);
+            }
         }
-        prevPrevToken = prevToken;
-        prevToken = token;
-        return token;
-    }*/
-    
-//    @Override
-//    public void recover(RecognitionException e) {
-//        throw e;
-//    }
+    } else {
+        // if (token.getType() == NL) {
+        //     if (prevPrevToken != null && prevPrevToken.getType() == KW_CODE && prevToken.getType() == COLON) {
+        //         denter.reset();
+        //         denter.enable(); 
+        //     }
+        // }
+        // if (token.getType() == COLON) {
+        //     if (prevToken != null && prevToken.getType() == KW_CODE) {
+        //         denter.reset();
+        //         denter.enable();
+        //     }
+        // }
+    }
+    prevPrevToken = prevToken;
+    prevToken = token;
+    return token;
+}
+*/
+/*    
+@Override
+public void recover(RecognitionException e) {
+    throw e;
+}
+*/
 }
 
 //#region Keywords
@@ -148,6 +150,8 @@ KW_MANDATED : 'mandated';
 KW_BRIDGE : 'bridge';
 KW_DEPRECATED : 'deprecated';
 KW_CODE : 'Code';
+KW_RUNTIME_VISIBILE_ANNOTATIONS : 'RuntimeVisibleAnnotations';
+KW_RUNTIME_INVISIBLE_ANNOTATIONS : 'RuntimeInvisibleAnnotations';
 INIT : '<init>';
 
 //#endregion
@@ -423,6 +427,65 @@ NL  :   ('\r' '\n'? | '\n') [ \t]* -> channel(HIDDEN)
 WS  :   [ \t\u000C]+ -> skip
     ;
 
+//#region Descriptor comments
+/*
+ClassDescriptor
+    : '//' WS? [cC]'lass' WS SlashyName WS? (NL | EOF)
+    ;
+
+FieldDescriptor
+    : '//' WS? [fF]'ield' WS (SlashyName '.')? Identifier ':' NonVoidTypeName WS? (NL | EOF)
+    ;
+
+StringDescriptor
+    : '//' WS? [sS]'tring' WS StringCharacters? (NL | EOF)
+    ;
+
+MethodDescriptor
+    : '//' WS? [mM]'ethod' WS (SlashyName '.')? (Identifier | '"<init>"' | '"<clinit>"') ':' MethodTypeName WS? (NL | EOF)
+    ;
+
+MethodTypeDescriptor
+    : '//' WS? [mM]'ethod'[tT]'ype' WS MethodTypeName WS? (NL | EOF)
+    ;
+
+fragment SlashyName
+    : Identifier ('/' Identifier)*
+    ;
+
+fragment MethodTypeName
+    : '(' NonVoidTypeName* ')' TypeName
+    ;
+
+fragment TypeName
+    : NonVoidTypeName
+    | VoidTypeName
+    ;
+
+fragment NonVoidTypeName
+    : PrimitiveTypeName
+    | ReferenceTypeName
+    | ArrayTypeName
+    ;
+
+fragment PrimitiveTypeName
+    : [BSIJCFDZ]
+    ;
+
+fragment VoidTypeName
+    : 'V'
+    ;
+
+fragment ReferenceTypeName
+    : 'L' SlashyName ';'
+    ;
+
+fragment ArrayTypeName
+    : '[' NonVoidTypeName
+    ;
+*/
+//#endregion
+
 COMMENT
     :   '/*' .*? '*/' -> channel(HIDDEN)
     ;
@@ -437,11 +500,11 @@ LINE_COMMENT
 
 NegativeIntegerLiteral
     :   '-' IntegerLiteral
-        {
-            switch (getText().charAt(getText().length() - 1)) {
-                case 'l', 'L': setType(NegativeLongLiteral);
-            }
-        }
+{
+switch (getText().charAt(getText().length() - 1)) {
+    case 'l', 'L': setType(NegativeLongLiteral);
+}
+}
     ;
 
 IntegerLiteral
@@ -450,11 +513,11 @@ IntegerLiteral
         |   OctalIntegerLiteral
         |   BinaryIntegerLiteral
         )
-        {
-            switch (getText().charAt(getText().length() - 1)) {
-                case 'l', 'L': setType(LongLiteral);
-            }
-        }
+{
+switch (getText().charAt(getText().length() - 1)) {
+    case 'l', 'L': setType(LongLiteral);
+}
+}
     ;
 
 //#region Integer Literal Fragments
@@ -609,12 +672,12 @@ FloatingPointLiteral
     :   '-'? (   DecimalFloatingPointLiteral
         |   HexadecimalFloatingPointLiteral
         )
-        {
-            switch (getText().charAt(getText().length() - 1)) {
-                case 'f', 'F' -> {}
-                default -> setType(DoubleLiteral);
-            }
-        }
+{
+switch (getText().charAt(getText().length() - 1)) {
+    case 'f', 'F' -> {}
+    default -> setType(DoubleLiteral);
+}
+}
     ;
 
 //#region Floating-Point Literal Fragments

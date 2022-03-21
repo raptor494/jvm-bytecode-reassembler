@@ -98,6 +98,18 @@ This holds true for method types as well: for the following example, the method'
 public void foo(int x, float[] floats, String str);
 ```
 
+#### Annotations
+You can add annotations after the declaration of any field, method, or class. There are two categories of annotations, each defined in their own block: RuntimeVisibleAnnotations and RuntimeInvisibleAnnotations.
+
+Example:
+```java
+public int x;
+  RuntimeVisibleAnnotations:
+    @javax.lang.annotation.NonNull()
+    @example.ExampleAnnotation("value")
+    @example.ExampleAnnotation(value="value2", ints={1,2,3,4}, clazz=int.class)
+```
+
 #### The `invokedynamic` Instruction
 `invokedynamic` is very special. Due to the way `javap` outputs `invokedynamic` instructions, I had to make up a syntax for it. To give you an idea of what I mean, this is what `javap` outputs for a call to `java.util.List.forEach(System.out::println)`:
 ```java

@@ -115,9 +115,6 @@ record Book(String name, String author) implements AuthoredLiterature {
 		if (author == null) throw new NullPointerException("author");
 		if ((name = name.strip()).isEmpty()) throw new IllegalArgumentException("name may not be blank");
 		if ((author = author.strip()).isEmpty()) throw new IllegalArgumentException("author may not be blank");
-		
-		this.name = name;
-		this.author = author;
 	}
 	
 }
@@ -129,9 +126,6 @@ record Magazine(String name, String edition) implements Literature {
 		if (edition == null) throw new NullPointerException("edition");
 		if ((name = name.strip()).isEmpty()) throw new IllegalArgumentException("name may not be blank");
 		if ((edition = edition.strip()).isEmpty()) throw new IllegalArgumentException("edition may not be blank");
-		
-		this.name = name;
-		this.edition = edition;
 	}
 	
 }
@@ -142,9 +136,6 @@ record Newspaper(String name, Date date) implements Literature {
 		if (name == null) throw new NullPointerException("name");
 		if (date == null) throw new NullPointerException("date");
 		if ((name = name.strip()).isEmpty()) throw new IllegalArgumentException("name may not be blank");
-		
-		this.name = name;
-		this.date = date;
 	}
 	
 }
@@ -155,8 +146,6 @@ record Website(String name, URL homepageURL) implements Literature {
 		if (name == null) throw new NullPointerException("name");
 		if (homepageURL == null) throw new NullPointerException("homepageURL");
 		if ((name = name.strip()).isEmpty()) throw new IllegalArgumentException("name may not be blank");
-		
-		this.name = name;
 	}
 	
 }

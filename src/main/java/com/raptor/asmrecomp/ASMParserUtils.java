@@ -3,13 +3,19 @@ package com.raptor.asmrecomp;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
+import com.raptor.asmrecomp.ASMParser.*;
+
 import org.apache.commons.text.StringEscapeUtils;
+import org.objectweb.asm.AnnotationVisitor;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.signature.SignatureWriter;
 
-import com.raptor.asmrecomp.ASMParser.*;
-
 public class ASMParserUtils {
+
+	@FunctionalInterface
+	public static interface AnnotationAcceptor {
+		AnnotationVisitor visitAnnotation(final String descriptor, final boolean visible);
+	}
 	
 	private static abstract class BaseSignatureVisitor extends ASMParserBaseVisitor<SignatureWriter> {
 		protected final SignatureWriter sw;
@@ -330,8 +336,8 @@ public class ASMParserUtils {
 	public static class DescriptorVisitor extends BaseSignatureVisitor {
 		private final Function<? super String, ? extends TypeParameterContext> typeParameterLookup;
 		
-		public DescriptorVisitor(Function<? super String, ? extends ASMParser.TypeParameterContext> function) {
-			this(null, function);
+		public DescriptorVisitor(Function<? super String, ? extends TypeParameterContext> typeParameterLookup) {
+			this(null, typeParameterLookup);
 		}
 		
 		public DescriptorVisitor(SignatureWriter sw, Function<? super String, ? extends TypeParameterContext> typeParameterLookup) {
@@ -399,8 +405,7 @@ public class ASMParserUtils {
 		
 		@Override
 		public SignatureWriter visitConstructorDeclaration(ConstructorDeclarationContext ctx) {
-			super.visitConstructorDeclaration(ctx);
-			return sw;
+			return super.visitConstructorDeclaration(ctx);
 		}
 
 		@Override

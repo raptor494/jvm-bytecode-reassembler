@@ -1,0 +1,37 @@
+Classfile /C:/Users/flyin/Documents/Java/asm-recompiler/src/test/java/com/raptor/test06/ClassOnlyAnnotation.class
+  Last modified Mar 21, 2022; size 346 bytes
+  SHA-256 checksum 70a9227cedeed3088e9dd42a20026e927beb2c9002b45b34914cade4228c82dc
+  Compiled from "ClassOnlyAnnotation.java"
+public interface com.raptor.test06.ClassOnlyAnnotation extends java.lang.annotation.Annotation
+  minor version: 0
+  major version: 61
+  flags: (0x2601) ACC_PUBLIC, ACC_INTERFACE, ACC_ABSTRACT, ACC_ANNOTATION
+  this_class: #1                          // com/raptor/test06/ClassOnlyAnnotation
+  super_class: #3                         // java/lang/Object
+  interfaces: 1, fields: 0, methods: 1, attributes: 2
+Constant pool:
+   #1 = Class              #2             // com/raptor/test06/ClassOnlyAnnotation
+   #2 = Utf8               com/raptor/test06/ClassOnlyAnnotation
+   #3 = Class              #4             // java/lang/Object
+   #4 = Utf8               java/lang/Object
+   #5 = Class              #6             // java/lang/annotation/Annotation
+   #6 = Utf8               java/lang/annotation/Annotation
+   #7 = Utf8               value
+   #8 = Utf8               ()Ljava/lang/String;
+   #9 = Utf8               SourceFile
+  #10 = Utf8               ClassOnlyAnnotation.java
+  #11 = Utf8               RuntimeVisibleAnnotations
+  #12 = Utf8               Ljava/lang/annotation/Retention;
+  #13 = Utf8               Ljava/lang/annotation/RetentionPolicy;
+  #14 = Utf8               CLASS
+{
+  public abstract java.lang.String value();
+    descriptor: ()Ljava/lang/String;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+}
+SourceFile: "ClassOnlyAnnotation.java"
+RuntimeVisibleAnnotations:
+  0: #12(#7=e#13.#14)
+    java.lang.annotation.Retention(
+      value=Ljava/lang/annotation/RetentionPolicy;.CLASS
+    )

@@ -8,5 +8,11 @@ public class test.Test01 {
         ldc "Test01 init"
         invokevirtual java.io.PrintStream.println: (java.lang.String) void
         return
+      RuntimeVisibleAnnotations:
+        @test.Foo(-31)
+
+    public int x;
+      RuntimeVisibleAnnotations:
+        @test.TestAnnotation(int.class)
 
 }

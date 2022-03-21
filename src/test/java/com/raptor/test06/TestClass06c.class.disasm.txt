@@ -1,0 +1,138 @@
+Classfile /C:/Users/flyin/Documents/Java/asm-recompiler/src/test/java/com/raptor/test06/TestClass06c.class
+  Last modified Mar 21, 2022; size 987 bytes
+  SHA-256 checksum 7c32703804658ae83a8d1ea7e110042057929b4ce69183655527326778842d11
+  Compiled from "TestClass06c.java"
+public final class com.raptor.test06.TestClass06c extends java.lang.Enum<com.raptor.test06.TestClass06c> implements com.raptor.test06.TestClass06b
+  minor version: 0
+  major version: 61
+  flags: (0x4031) ACC_PUBLIC, ACC_FINAL, ACC_SUPER, ACC_ENUM
+  this_class: #1                          // com/raptor/test06/TestClass06c
+  super_class: #17                        // java/lang/Enum
+  interfaces: 1, fields: 2, methods: 5, attributes: 2
+Constant pool:
+   #1 = Class              #2             // com/raptor/test06/TestClass06c
+   #2 = Utf8               com/raptor/test06/TestClass06c
+   #3 = Fieldref           #1.#4          // com/raptor/test06/TestClass06c.FIELD_1:Lcom/raptor/test06/TestClass06c;
+   #4 = NameAndType        #5:#6          // FIELD_1:Lcom/raptor/test06/TestClass06c;
+   #5 = Utf8               FIELD_1
+   #6 = Utf8               Lcom/raptor/test06/TestClass06c;
+   #7 = Fieldref           #1.#8          // com/raptor/test06/TestClass06c.$VALUES:[Lcom/raptor/test06/TestClass06c;
+   #8 = NameAndType        #9:#10         // $VALUES:[Lcom/raptor/test06/TestClass06c;
+   #9 = Utf8               $VALUES
+  #10 = Utf8               [Lcom/raptor/test06/TestClass06c;
+  #11 = Methodref          #12.#13        // "[Lcom/raptor/test06/TestClass06c;".clone:()Ljava/lang/Object;
+  #12 = Class              #10            // "[Lcom/raptor/test06/TestClass06c;"
+  #13 = NameAndType        #14:#15        // clone:()Ljava/lang/Object;
+  #14 = Utf8               clone
+  #15 = Utf8               ()Ljava/lang/Object;
+  #16 = Methodref          #17.#18        // java/lang/Enum.valueOf:(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+  #17 = Class              #19            // java/lang/Enum
+  #18 = NameAndType        #20:#21        // valueOf:(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+  #19 = Utf8               java/lang/Enum
+  #20 = Utf8               valueOf
+  #21 = Utf8               (Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+  #22 = Methodref          #17.#23        // java/lang/Enum."<init>":(Ljava/lang/String;I)V
+  #23 = NameAndType        #24:#25        // "<init>":(Ljava/lang/String;I)V
+  #24 = Utf8               <init>
+  #25 = Utf8               (Ljava/lang/String;I)V
+  #26 = String             #5             // FIELD_1
+  #27 = Methodref          #1.#23         // com/raptor/test06/TestClass06c."<init>":(Ljava/lang/String;I)V
+  #28 = Methodref          #1.#29         // com/raptor/test06/TestClass06c.$values:()[Lcom/raptor/test06/TestClass06c;
+  #29 = NameAndType        #30:#31        // $values:()[Lcom/raptor/test06/TestClass06c;
+  #30 = Utf8               $values
+  #31 = Utf8               ()[Lcom/raptor/test06/TestClass06c;
+  #32 = Class              #33            // com/raptor/test06/TestClass06b
+  #33 = Utf8               com/raptor/test06/TestClass06b
+  #34 = Utf8               values
+  #35 = Utf8               Code
+  #36 = Utf8               LineNumberTable
+  #37 = Utf8               (Ljava/lang/String;)Lcom/raptor/test06/TestClass06c;
+  #38 = Utf8               Signature
+  #39 = Utf8               ()V
+  #40 = Utf8               <clinit>
+  #41 = Utf8               Ljava/lang/Enum<Lcom/raptor/test06/TestClass06c;>;Lcom/raptor/test06/TestClass06b;
+  #42 = Utf8               SourceFile
+  #43 = Utf8               TestClass06c.java
+{
+  public static final com.raptor.test06.TestClass06c FIELD_1;
+    descriptor: Lcom/raptor/test06/TestClass06c;
+    flags: (0x4019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL, ACC_ENUM
+
+  private static final com.raptor.test06.TestClass06c[] $VALUES;
+    descriptor: [Lcom/raptor/test06/TestClass06c;
+    flags: (0x101a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL, ACC_SYNTHETIC
+
+  public static com.raptor.test06.TestClass06c[] values();
+    descriptor: ()[Lcom/raptor/test06/TestClass06c;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #7                  // Field $VALUES:[Lcom/raptor/test06/TestClass06c;
+         3: invokevirtual #11                 // Method "[Lcom/raptor/test06/TestClass06c;".clone:()Ljava/lang/Object;
+         6: checkcast     #12                 // class "[Lcom/raptor/test06/TestClass06c;"
+         9: areturn
+      LineNumberTable:
+        line 3: 0
+
+  public static com.raptor.test06.TestClass06c valueOf(java.lang.String);
+    descriptor: (Ljava/lang/String;)Lcom/raptor/test06/TestClass06c;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: ldc           #1                  // class com/raptor/test06/TestClass06c
+         2: aload_0
+         3: invokestatic  #16                 // Method java/lang/Enum.valueOf:(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+         6: checkcast     #1                  // class com/raptor/test06/TestClass06c
+         9: areturn
+      LineNumberTable:
+        line 3: 0
+
+  private com.raptor.test06.TestClass06c();
+    descriptor: (Ljava/lang/String;I)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: aload_1
+         2: iload_2
+         3: invokespecial #22                 // Method java/lang/Enum."<init>":(Ljava/lang/String;I)V
+         6: return
+      LineNumberTable:
+        line 3: 0
+    Signature: #39                          // ()V
+
+  private static com.raptor.test06.TestClass06c[] $values();
+    descriptor: ()[Lcom/raptor/test06/TestClass06c;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=4, locals=0, args_size=0
+         0: iconst_1
+         1: anewarray     #1                  // class com/raptor/test06/TestClass06c
+         4: dup
+         5: iconst_0
+         6: getstatic     #3                  // Field FIELD_1:Lcom/raptor/test06/TestClass06c;
+         9: aastore
+        10: areturn
+      LineNumberTable:
+        line 3: 0
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=4, locals=0, args_size=0
+         0: new           #1                  // class com/raptor/test06/TestClass06c
+         3: dup
+         4: ldc           #26                 // String FIELD_1
+         6: iconst_0
+         7: invokespecial #27                 // Method "<init>":(Ljava/lang/String;I)V
+        10: putstatic     #3                  // Field FIELD_1:Lcom/raptor/test06/TestClass06c;
+        13: invokestatic  #28                 // Method $values:()[Lcom/raptor/test06/TestClass06c;
+        16: putstatic     #7                  // Field $VALUES:[Lcom/raptor/test06/TestClass06c;
+        19: return
+      LineNumberTable:
+        line 4: 0
+        line 3: 13
+}
+Signature: #41                          // Ljava/lang/Enum<Lcom/raptor/test06/TestClass06c;>;Lcom/raptor/test06/TestClass06b;
+SourceFile: "TestClass06c.java"

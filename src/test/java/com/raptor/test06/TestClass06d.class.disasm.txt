@@ -1,0 +1,171 @@
+Classfile /C:/Users/flyin/Documents/Java/asm-recompiler/src/test/java/com/raptor/test06/TestClass06d.class
+  Last modified Mar 21, 2022; size 1306 bytes
+  SHA-256 checksum aa3cc29d8c57c5c9ae9dbab65d92987e7182e2ce7e8150cc4f7700a6b045ad97
+  Compiled from "TestClass06d.java"
+public final class com.raptor.test06.TestClass06d extends java.lang.Record
+  minor version: 0
+  major version: 61
+  flags: (0x0031) ACC_PUBLIC, ACC_FINAL, ACC_SUPER
+  this_class: #8                          // com/raptor/test06/TestClass06d
+  super_class: #2                         // java/lang/Record
+  interfaces: 0, fields: 2, methods: 6, attributes: 4
+Constant pool:
+   #1 = Methodref          #2.#3          // java/lang/Record."<init>":()V
+   #2 = Class              #4             // java/lang/Record
+   #3 = NameAndType        #5:#6          // "<init>":()V
+   #4 = Utf8               java/lang/Record
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = Fieldref           #8.#9          // com/raptor/test06/TestClass06d.field1:I
+   #8 = Class              #10            // com/raptor/test06/TestClass06d
+   #9 = NameAndType        #11:#12        // field1:I
+  #10 = Utf8               com/raptor/test06/TestClass06d
+  #11 = Utf8               field1
+  #12 = Utf8               I
+  #13 = Fieldref           #8.#14         // com/raptor/test06/TestClass06d.field2:Ljava/lang/String;
+  #14 = NameAndType        #15:#16        // field2:Ljava/lang/String;
+  #15 = Utf8               field2
+  #16 = Utf8               Ljava/lang/String;
+  #17 = InvokeDynamic      #0:#18         // #0:toString:(Lcom/raptor/test06/TestClass06d;)Ljava/lang/String;
+  #18 = NameAndType        #19:#20        // toString:(Lcom/raptor/test06/TestClass06d;)Ljava/lang/String;
+  #19 = Utf8               toString
+  #20 = Utf8               (Lcom/raptor/test06/TestClass06d;)Ljava/lang/String;
+  #21 = InvokeDynamic      #0:#22         // #0:hashCode:(Lcom/raptor/test06/TestClass06d;)I
+  #22 = NameAndType        #23:#24        // hashCode:(Lcom/raptor/test06/TestClass06d;)I
+  #23 = Utf8               hashCode
+  #24 = Utf8               (Lcom/raptor/test06/TestClass06d;)I
+  #25 = InvokeDynamic      #0:#26         // #0:equals:(Lcom/raptor/test06/TestClass06d;Ljava/lang/Object;)Z
+  #26 = NameAndType        #27:#28        // equals:(Lcom/raptor/test06/TestClass06d;Ljava/lang/Object;)Z
+  #27 = Utf8               equals
+  #28 = Utf8               (Lcom/raptor/test06/TestClass06d;Ljava/lang/Object;)Z
+  #29 = Utf8               (ILjava/lang/String;)V
+  #30 = Utf8               Code
+  #31 = Utf8               LineNumberTable
+  #32 = Utf8               MethodParameters
+  #33 = Utf8               ()Ljava/lang/String;
+  #34 = Utf8               ()I
+  #35 = Utf8               (Ljava/lang/Object;)Z
+  #36 = Utf8               SourceFile
+  #37 = Utf8               TestClass06d.java
+  #38 = Utf8               Record
+  #39 = Utf8               BootstrapMethods
+  #40 = MethodHandle       6:#41          // REF_invokeStatic java/lang/runtime/ObjectMethods.bootstrap:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/TypeDescriptor;Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/invoke/MethodHandle;)Ljava/lang/Object;
+  #41 = Methodref          #42.#43        // java/lang/runtime/ObjectMethods.bootstrap:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/TypeDescriptor;Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/invoke/MethodHandle;)Ljava/lang/Object;
+  #42 = Class              #44            // java/lang/runtime/ObjectMethods
+  #43 = NameAndType        #45:#46        // bootstrap:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/TypeDescriptor;Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/invoke/MethodHandle;)Ljava/lang/Object;
+  #44 = Utf8               java/lang/runtime/ObjectMethods
+  #45 = Utf8               bootstrap
+  #46 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/TypeDescriptor;Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/invoke/MethodHandle;)Ljava/lang/Object;
+  #47 = String             #48            // field1;field2
+  #48 = Utf8               field1;field2
+  #49 = MethodHandle       1:#7           // REF_getField com/raptor/test06/TestClass06d.field1:I
+  #50 = MethodHandle       1:#13          // REF_getField com/raptor/test06/TestClass06d.field2:Ljava/lang/String;
+  #51 = Utf8               InnerClasses
+  #52 = Class              #53            // java/lang/invoke/MethodHandles$Lookup
+  #53 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #54 = Class              #55            // java/lang/invoke/MethodHandles
+  #55 = Utf8               java/lang/invoke/MethodHandles
+  #56 = Utf8               Lookup
+{
+  private final int field1;
+    descriptor: I
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+
+  private final java.lang.String field2;
+    descriptor: Ljava/lang/String;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+
+  public com.raptor.test06.TestClass06d(int, java.lang.String);
+    descriptor: (ILjava/lang/String;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=3, args_size=3
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Record."<init>":()V
+         4: aload_0
+         5: iload_1
+         6: putfield      #7                  // Field field1:I
+         9: aload_0
+        10: aload_2
+        11: putfield      #13                 // Field field2:Ljava/lang/String;
+        14: return
+      LineNumberTable:
+        line 3: 0
+    MethodParameters:
+      Name                           Flags
+      field1
+      field2
+
+  public final java.lang.String toString();
+    descriptor: ()Ljava/lang/String;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokedynamic #17,  0             // InvokeDynamic #0:toString:(Lcom/raptor/test06/TestClass06d;)Ljava/lang/String;
+         6: areturn
+      LineNumberTable:
+        line 3: 0
+
+  public final int hashCode();
+    descriptor: ()I
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokedynamic #21,  0             // InvokeDynamic #0:hashCode:(Lcom/raptor/test06/TestClass06d;)I
+         6: ireturn
+      LineNumberTable:
+        line 3: 0
+
+  public final boolean equals(java.lang.Object);
+    descriptor: (Ljava/lang/Object;)Z
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokedynamic #25,  0             // InvokeDynamic #0:equals:(Lcom/raptor/test06/TestClass06d;Ljava/lang/Object;)Z
+         7: ireturn
+      LineNumberTable:
+        line 3: 0
+
+  public int field1();
+    descriptor: ()I
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #7                  // Field field1:I
+         4: ireturn
+      LineNumberTable:
+        line 3: 0
+
+  public java.lang.String field2();
+    descriptor: ()Ljava/lang/String;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #13                 // Field field2:Ljava/lang/String;
+         4: areturn
+      LineNumberTable:
+        line 3: 0
+}
+SourceFile: "TestClass06d.java"
+Record:
+  int field1;
+    descriptor: I
+
+  java.lang.String field2;
+    descriptor: Ljava/lang/String;
+
+BootstrapMethods:
+  0: #40 REF_invokeStatic java/lang/runtime/ObjectMethods.bootstrap:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/TypeDescriptor;Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/invoke/MethodHandle;)Ljava/lang/Object;
+    Method arguments:
+      #8 com/raptor/test06/TestClass06d
+      #47 field1;field2
+      #49 REF_getField com/raptor/test06/TestClass06d.field1:I
+      #50 REF_getField com/raptor/test06/TestClass06d.field2:Ljava/lang/String;
+InnerClasses:
+  public static final #56= #52 of #54;    // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
